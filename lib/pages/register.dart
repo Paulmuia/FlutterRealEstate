@@ -13,9 +13,8 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: Container(
-        width: double.infinity,
+       height: 1000,
         decoration: BoxDecoration(
             gradient: LinearGradient(
                 begin: Alignment.topCenter,
@@ -26,90 +25,154 @@ class _RegisterPageState extends State<RegisterPage> {
                 ]
             )
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: 80,),
-            Padding(
-              padding: EdgeInsets.all(20),
-              child: Column(
-                children: [
-                  Text("Register",style: TextStyle(color: Colors.white,fontSize: 40),),
-                  SizedBox(height: 10,),
-                  Text("Welcome",style: TextStyle(color: Colors.white,fontSize: 20),)
-                ],
-              ),
-            ),
-            SizedBox(height: 20,),
-                Container(
-                  margin: EdgeInsets.only(bottom: 100),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(topLeft: Radius.circular(60),topRight: Radius.circular(60),bottomLeft: Radius.circular(60),bottomRight: Radius.circular(60))
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.all(20),
-                      child: Column(
+        child: Expanded(
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: 80,),
+                Padding(
+                  padding: const EdgeInsets.only(left: 20),
+                  child: Text('Register',style: TextStyle(color: Colors.white,fontSize: 40,fontWeight: FontWeight.bold),),
+                ),
+                SizedBox(height: 10,),
+                Padding(
+                  padding: const EdgeInsets.only(left: 60),
+                  child: Text('Welcome',style: TextStyle(color: Colors.white,fontSize: 20),),
+                ),
+                SizedBox(height: 20,),
+                Stack(
+                  children: [
+                    Container(
+                        height: 580,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(60)),
+                          color: Colors.white,
+                        ),
+                    ),
+                     Column(
                         children: [
                           SizedBox(height: 20,),
-                          Container(
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: Colors.white,
-                                boxShadow: [BoxShadow(
-                                    color: Color.fromRGBO(225, 95, 27, .3),
-                                    blurRadius: 10,
-                                    offset: Offset(0,10)
-                                )]
-                            ),
-                            child: Column(
-                              children: [
-                                Container(
-                                  padding: EdgeInsets.all(5),
-                                  decoration: BoxDecoration(
-                                      border: Border(bottom: BorderSide(color: Colors.grey))
-                                  ),
-                                  child: TextField(
-                                    decoration: InputDecoration(
-                                        hintText: 'Email or phone number',
-                                        hintStyle: TextStyle(color: Colors.grey),
-                                        border: InputBorder.none
-                                    ) ,
-                                  ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 20,right: 20),
+                            child: TextField(
+                              decoration: InputDecoration(
+                                hintText: 'Enter email address',
+                                labelText: 'Enter email address',
+                                prefixIcon: Icon(Icons.email,color: Colors.blue,),
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15),
+                                    borderSide: BorderSide(
+                                      width: 1.0,
+                                      color: Colors.orange,
+                                    )
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15),
+                                    borderSide: BorderSide(
+                                      width: 1.0,
+                                      color: Colors.orange,
+                                    )
+                                ),
+                                border:OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(15),
 
                                 ),
-                                Container(
-                                  padding: EdgeInsets.all(5),
-                                  decoration: BoxDecoration(
-                                      border: Border(bottom: BorderSide(color: Colors.grey))
-                                  ),
-                                  child: TextField(
-                                    decoration: InputDecoration(
-                                        hintText: 'Password',
-                                        hintStyle: TextStyle(color: Colors.grey),
-                                        border: InputBorder.none
-                                    ) ,
-                                  ),
-                                ),
-                                Container(
-                                  padding: EdgeInsets.all(5),
-                                  decoration: BoxDecoration(
-                                      border: Border(bottom: BorderSide(color: Colors.grey))
-                                  ),
-                                  child: TextField(
-                                    decoration: InputDecoration(
-                                        hintText: 'Confirm Password',
-                                        hintStyle: TextStyle(color: Colors.grey),
-                                        border: InputBorder.none
-                                    ) ,
-                                  ),
-                                ),
 
-                              ],
+                              ),
                             ),
                           ),
-                          SizedBox(height: 40,),
+                          SizedBox(height: 10,),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 20,right: 20),
+                            child: TextField(
+                              decoration: InputDecoration(
+                                hintText: 'Enter username',
+                                labelText: 'Enter username',
+                                prefixIcon: Icon(Icons.person,color: Colors.blue,),
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15),
+                                    borderSide: BorderSide(
+                                      width: 1.0,
+                                      color: Colors.orange,
+                                    )
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15),
+                                    borderSide: BorderSide(
+                                      width: 1.0,
+                                      color: Colors.orange,
+                                    )
+                                ),
+                                border:OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(15),
 
+                                ),
+
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 10,),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 20,right: 20),
+                            child: TextField(
+                              decoration: InputDecoration(
+                                hintText: 'Enter Password',
+                                labelText: 'Enter Password',
+                                prefixIcon: Icon(Icons.lock,color: Colors.blue,),
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15),
+                                    borderSide: BorderSide(
+                                      width: 1.0,
+                                      color: Colors.orange,
+                                    )
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15),
+                                    borderSide: BorderSide(
+                                      width: 1.0,
+                                      color: Colors.orange,
+                                    )
+                                ),
+                                border:OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(15),
+
+                                ),
+
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 10,),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 20,right: 20),
+                            child: TextField(
+                              decoration: InputDecoration(
+                                hintText: 'Confirm password',
+                                labelText: 'Confirm Password',
+                                prefixIcon: Icon(Icons.lock,color: Colors.blue,),
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15),
+                                    borderSide: BorderSide(
+                                      width: 1.0,
+                                      color: Colors.orange,
+                                    )
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15),
+                                    borderSide: BorderSide(
+                                      width: 1.0,
+                                      color: Colors.orange,
+                                    )
+                                ),
+                                border:OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(15),
+
+                                ),
+
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 20,),
                           GestureDetector(
                             onTap: (){
                               print("...Go to login Screen");
@@ -120,7 +183,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               );
                             },
                             child: Container(
-                              margin: EdgeInsets.symmetric(horizontal: 30),
+                              margin: EdgeInsets.symmetric(horizontal: 80),
                               height: 50,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(30),
@@ -131,30 +194,39 @@ class _RegisterPageState extends State<RegisterPage> {
                               ),
                             ),
                           ),
-                          SizedBox(height: 50,),
-                          Text('Continue with social media',style: TextStyle(color: Colors.grey),),
-                          SizedBox(height: 50,),
+                          SizedBox(height: 10,),
+                             Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text('Already have an account.'),
+                                SizedBox(width: 5,),
+                                GestureDetector(
+                                    onTap: (){
+                                      print("...Go to login Screen");
+                                      Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                          builder: (context) => WelcomePage(),
+                                        ),
+                                      );
+                                    },
+                                    child: Text('Login here',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.blue),))
+                              ],
+                            ),
+                          SizedBox(height: 10,),
+                          Divider(
+                            color: Colors.blue,
+                            height: 2.0,
+                            indent: 10.0,
+                            endIndent: 10.0,
+                          ),
+                          SizedBox(height: 20,),
+                          Text('Continue with social media'),
+                          SizedBox(height: 20,),
                           Row(
                             children: [
                               Expanded(
                                 child: Container(
-                                  height: 50,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(50),
-                                      color: Colors.black
-                                  ),
-                                  child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Image(image: AssetImage('lib/assets/fb.png',),height: 20,width:20,),
-                              Text('Facebook',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
-                            ],
-                          ),
-                                ),
-                              ),
-                              SizedBox(width: 30,),
-                              Expanded(
-                                child: Container(
+                                  margin: EdgeInsets.only(left: 20),
                                   height: 50,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(50),
@@ -163,7 +235,49 @@ class _RegisterPageState extends State<RegisterPage> {
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                     children: [
-                                      Image(image: AssetImage('lib/assets/google.png',),height: 32,width: 32,),
+                                      Container(
+                                        height: 40,
+                                        width: 40,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(30),
+                                          color: Colors.black,
+                                          image: DecorationImage(
+                                            fit: BoxFit.cover,
+                                            image: AssetImage('lib/assets/fb.png')
+                                          )
+
+                                        ),
+                                      ),
+                                      Text(' Facebook',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              SizedBox(width: 30,),
+                              Expanded(
+                                child: Container(
+                                  margin: EdgeInsets.only(right: 20),
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(50),
+                                      color: Colors.black
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Container(
+                                        height: 40,
+                                        width: 40,
+                                        decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(30),
+                                            color: Colors.black,
+                                            image: DecorationImage(
+                                                fit: BoxFit.cover,
+                                                image: AssetImage('lib/assets/google.png')
+                                            )
+
+                                        ),
+                                      ),
                                       Text('Google',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
                                     ],
                                   ),
@@ -173,10 +287,12 @@ class _RegisterPageState extends State<RegisterPage> {
                           )
                         ],
                       ),
-                    ),
-
-                  ),
-          ],
+                    
+                  ],
+                )
+              ],
+            ),
+          ),
         ),
       ),
     );

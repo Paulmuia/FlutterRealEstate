@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mm/pages/detailed_house.dart';
+import 'package:mm/pages/house_page.dart';
 import 'package:mm/pages/register.dart';
 import 'package:mm/pages/verificationscreen.dart';
 import 'package:mm/pages/welcome_page.dart';
