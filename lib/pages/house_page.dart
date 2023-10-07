@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../controllers/featured_controller.dart';
 
 class HousePage extends StatefulWidget {
   const HousePage({super.key});
@@ -10,6 +13,7 @@ class HousePage extends StatefulWidget {
 class _HousePageState extends State<HousePage> {
   @override
   Widget build(BuildContext context) {
+   Get.find<FeaturedController>();
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(

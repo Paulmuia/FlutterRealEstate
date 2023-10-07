@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:mm/controllers/featured_controller.dart';
 import 'package:mm/pages/detailed_house.dart';
 import 'package:mm/pages/house_page.dart';
 
@@ -13,6 +15,7 @@ class _HomePageState extends State<HomePage> {
   PageController pageController = PageController(viewportFraction: 0.8);
   @override
   Widget build(BuildContext context) {
+    Get.find<FeaturedController>();
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(

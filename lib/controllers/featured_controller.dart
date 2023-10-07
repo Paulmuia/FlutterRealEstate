@@ -1,0 +1,32 @@
+import 'package:get/get.dart';
+import 'package:mm/data/repository/featured_repo.dart';
+import 'package:mm/models/featured_model.dart';
+
+class FeaturedController extends GetxController{
+  final FeaturedRepo featuredRepo;
+
+  FeaturedController({required this.featuredRepo});
+  List<dynamic> _fraturedList = [];
+  List<dynamic> get featuredList => _fraturedList;
+
+  bool _isLoaded =false;
+  bool get isLoaded => _isLoaded;
+
+  int _quantity = 0;
+
+  Future<void> getFeaturedList() async {
+    Response response = await featuredRepo.getFeaturedList();
+    if (response.statusCode ==200) {
+      print("kidogo tu");
+      // print("This is response ${response.body}");
+      _fraturedList =[];
+      _fraturedList.addAll(Featured.fromJson(response.body).rooms);
+      print(_fraturedList);
+      _isLoaded = true;
+      update();
+    }else {
+      print("kosea");
+      print("This is response ${response.statusCode}");
+    }
+  }
+}
