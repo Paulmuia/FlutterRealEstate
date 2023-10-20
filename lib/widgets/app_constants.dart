@@ -6,4 +6,4 @@ class AppConstants{
   static const String FEATURED_URI="/featured";
   
 
-}
+} 
