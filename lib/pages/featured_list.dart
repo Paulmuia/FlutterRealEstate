@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mm/controllers/featured_controller.dart';
+import 'package:mm/pages/detailed_house.dart';
 import 'package:mm/widgets/app_constants.dart';
 
 class FeaturedList extends StatelessWidget {
@@ -17,18 +18,27 @@ class FeaturedList extends StatelessWidget {
        (itemBuilder, index){
         return Column(
           children: [
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 10),
-              width: 200,
-              height: 120,
-              decoration: BoxDecoration(
-                color: Colors.blue,
-                borderRadius: BorderRadius.circular(10),
-                image: DecorationImage(image: NetworkImage(AppConstants.BASE_URL+featuredHouses.featuredList[index].plotImage),
-                fit: BoxFit.cover
-                ),
-              ), 
-              
+            GestureDetector(
+              onTap: (){
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const DetailedHouse(),
+                    ),
+                  );
+                },
+              child: Container(
+                margin: EdgeInsets.symmetric(horizontal: 10),
+                width: 200,
+                height: 120,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                  image: DecorationImage(image: NetworkImage(AppConstants.BASE_URL+featuredHouses.featuredList[index].plotImage),
+                  fit: BoxFit.cover
+                  ),
+                ), 
+                
+              ),
             ),
             Container(
               padding: EdgeInsets.symmetric(horizontal: 5, vertical: 10),

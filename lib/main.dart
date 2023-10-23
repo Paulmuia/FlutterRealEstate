@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mm/controllers/featured_controller.dart';
-import 'package:mm/pages/detailed_house.dart';
-import 'package:mm/pages/house_page.dart';
-import 'package:mm/pages/register.dart';
-import 'package:mm/pages/verificationscreen.dart';
-import 'package:mm/pages/welcome_page.dart';
+import 'package:mm/pages/splash_screen.dart';
 import 'helper/dependancies.dart' as dep;
 
 Future <void> main() async{
@@ -23,7 +19,8 @@ class MyApp extends StatelessWidget {
     return GetBuilder<FeaturedController>(builder: (_){
       return const GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: RegisterPage(),
+      home: SplashScreen(),
+      
     );
     });
   }

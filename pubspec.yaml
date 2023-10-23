@@ -33,6 +33,7 @@ dependencies:
   get: ^4.1.4
   simple_animations: ^5.0.2
   pinput: ^3.0.1
+  floating_bottom_navigation_bar: ^1.5.2
 
 
   # The following adds the Cupertino Icons font to your application.

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mm/widgets/app_constants.dart';
 
 import '../controllers/featured_controller.dart';
 
@@ -15,20 +16,10 @@ class _HousePageState extends State<HousePage> {
   Widget build(BuildContext context) {
    Get.find<FeaturedController>();
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-            gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                colors: [
-                  Colors.deepOrange,
-                  Colors.orange,
-                  Colors.orange
-                ]
-            )
-        ),
+      body: SafeArea(
         child: Column(
           children: [
-            SizedBox(height: 50,),
+            SizedBox(height: 20,),
             Row(
               children: [
                 SizedBox(width: 10,),
@@ -42,117 +33,134 @@ class _HousePageState extends State<HousePage> {
             Center(
               child:Text('Features',style: TextStyle(color: Colors.black,fontSize: 25,fontWeight: FontWeight.bold),),
             ),
-
+      
             Expanded(
-              child: Container(
+              child: GetBuilder<FeaturedController>(builder: (featuredProducts){
+                return Container(
                 //color: Colors.green,
                 child: ListView.builder(
-                  itemCount: 20,
+                  itemCount: featuredProducts.featuredList.length,
                     itemBuilder: (context,index){
-                  return Column(
+                  return featuredProducts.isLoaded?Column(
                     children: [
-                      Container(
-                        margin: EdgeInsets.only(left: 13,right: 13,top: 15,),
-                        height: 250,
+                      Stack(
+                        children: [
+                          Container(
+                        margin: EdgeInsets.only(left: 15,right: 15,top: 15,),
+                        height: 180,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(20)),
-                          color: Colors.orange,
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                          color: Colors.white,
                           image: DecorationImage(
-                            image: AssetImage('lib/assets/houses.png'),
+                            image: NetworkImage(AppConstants.BASE_URL+featuredProducts.featuredList[index].plotImage),
                             fit: BoxFit.cover,
                           )
                         ),
                       ),
                       Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(30)),
-                            color: Colors.white
-                        ),
-                        width: 350,
-                        height: 140,
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 10,top: 10),
-                                  child: Text('Grey house',style: TextStyle(color: Colors.black, fontSize: 20,fontWeight: FontWeight.bold),),
-                                ),
-                                Container(
-                                  height: 30,
-                                  width: 45,
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.all(Radius.circular(20))
-                                  ),
-                                  child: Row(
-                                    children: [
-                                      Icon(Icons.star,color: Colors.red,),
-                                      Text('4.5',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),)
+                        margin: EdgeInsets.only(top: 30,left: 30),
+                        height: 30,
+                        width: 30,
 
-                                    ],
-                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                  ),
-                                )
-                              ],
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 10),
-                              child: Row(
-                                children: [
-                                  Icon(Icons.location_on,color: Colors.black54,),
-                                  SizedBox(width: 10,),
-                                  Text('Nchiiru, NY 100',style: TextStyle(color: Colors.black, fontSize: 15),),
-                                ],
-                              ),
-                            ),
-                            Padding(
-                              padding:  EdgeInsets.only(left: 10,right: 10),
-                              child: Row(
-                                children: [
-                                  Icon(Icons.bed,color: Colors.green),
-                                  Text('4 Beds'),
-                                  SizedBox(width: 15,),
-                                  Icon(Icons.bathroom_rounded,color: Colors.green),
-                                  Text('2 Bath'),
-                                  SizedBox(width: 15,),
-                                  Icon(Icons.square_outlined,color: Colors.green),
-                                  Text('10.2 sqft'),
-                                ],
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 10),
-                              child: Row(
-                                children: [
-                                  Container(
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(30),
-                                        image: DecorationImage(
-                                            image: AssetImage('lib/assets/paul.png'),
-                                            fit: BoxFit.cover
-                                        )
-                                    ),
-                                    height: 45,
-                                    width: 45,
-                                  ),
-                                  SizedBox(width: 20,),
-                                  Text('Paul Muia',style: TextStyle(color: Colors.black,fontSize: 20,fontWeight: FontWeight.bold),),
-                                  SizedBox(width: 60,),
-                                  Text('Ksh 40,000',style: TextStyle(color: Colors.black,fontSize: 20,fontWeight: FontWeight.bold),),
-
-                                ],
-                              ),
-                            )
-                          ],
+                        decoration: BoxDecoration(shape: BoxShape.circle,
+                        color: Colors.white
                         ),
+                        child: Center(child: Icon(Icons.share)),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(top: 30,left: 330),
+                        height: 30,
+                        width: 30,
+
+                        decoration: BoxDecoration(shape: BoxShape.circle,
+                        color: Colors.white
+                        ),
+                        child: Icon(Icons.favorite_border_outlined),
                       )
+                        ],
+                      ),
+                      Container(
+              padding: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+              height: 120,
+              width: 350,
+              //color: Colors.orange,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("Kirimi, CA, NY", style: TextStyle(
+                    fontSize: 16, 
+                    fontWeight: FontWeight.bold
+                  ),),
+                  Container(
+                    height: 25,
+                    width: 50,
+                    color: Colors.white,
+                    child: Row(
+                      children: [
+                        Icon(Icons.star,color: Colors.orange,),
+                        Text('4.5',style: TextStyle(fontWeight: FontWeight.w700,fontSize: 16),)
+                      ],
+                    ),
+                  )
                     ],
-                  );
-                }),
+                   ),
+                  const Row(
+                    children: [
+                      Icon(Icons.pin_drop_outlined),
+                      Text("Meru,  Nchiru", style: TextStyle(color: Colors.black38),),
+                    ],
+                  ),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Icon(Icons.bed,color: Colors.green),
+                          Text("4 Beds",style: TextStyle(color: Colors.black38),)
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Icon(Icons.bathtub, color: Colors.green,),
+                          Text("BathRooms",style: TextStyle(color: Colors.black38),),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Icon(Icons.area_chart_rounded,color: Colors.green),
+                          Text("12 sqft", style: TextStyle(color: Colors.black38),)
+                        ],
+                      )
+
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Container(
+                        
+                        height: 25,
+                      width: 25,
+                      decoration: BoxDecoration(
+                        color: Colors.green,
+                        borderRadius: BorderRadius.circular(15),
+                        image: DecorationImage(image: AssetImage("lib/assets/paul.png"))
+                      ),
+                      ),
+                      Text("    John Adam", style: TextStyle(fontWeight: FontWeight.w700),)
+                    ],
+                  )
+                ],
               ),
+            )
+                    ],
+                  ):CircularProgressIndicator();
+                }),
+              );
+              })
             )
           ],
         ),

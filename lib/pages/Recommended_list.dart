@@ -1,30 +1,46 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:mm/controllers/featured_controller.dart';
+import 'package:mm/pages/detailed_house.dart';
+import 'package:mm/pages/house_contents.dart';
+import 'package:mm/widgets/app_constants.dart';
 
 class RecommendeList extends StatelessWidget {
   const RecommendeList({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return GetBuilder<FeaturedController>(builder: (featuredProducts){
+      return Container(
       child: ListView.builder(
-        itemCount: 10,
+        itemCount: featuredProducts.featuredList.length,
         scrollDirection: Axis.horizontal,
         itemBuilder:
        (itemBuilder, index){
         return Column(
           children: [
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 10),
-              width: 200,
-              height: 120,
-              decoration: BoxDecoration(
-                color: Colors.blue,
-                borderRadius: BorderRadius.circular(10),
-                image: const DecorationImage(image: AssetImage("lib/assets/house1.png"),
-                fit: BoxFit.cover
-                ),
-              ), 
-              
+            GestureDetector(
+              onTap: (){
+                         print("...Go to login Screen");
+                         Navigator.of(context).push(
+                           MaterialPageRoute(
+                             builder: (context) => DetailedHouse(),
+                           ),
+                         );
+                       },
+              child: Container(
+                margin: EdgeInsets.symmetric(horizontal: 10),
+                width: 200,
+                height: 120,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                  image:  DecorationImage(image: NetworkImage(AppConstants.BASE_URL+featuredProducts.featuredList[index].plotImage),
+                  fit: BoxFit.cover
+                  ),
+                ), 
+                
+              ),
             ),
             Container(
               padding: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
@@ -91,5 +107,6 @@ class RecommendeList extends StatelessWidget {
         );
       }),
     );
+    });
   }
 }
