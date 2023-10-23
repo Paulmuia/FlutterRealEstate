@@ -1,207 +1,190 @@
 import 'package:flutter/material.dart';
 
-class DetailedHouse extends StatefulWidget {
+class DetailedHouse extends StatelessWidget {
   const DetailedHouse({super.key});
 
   @override
-  State<DetailedHouse> createState() => _DetailedHouseState();
-}
-
-class _DetailedHouseState extends State<DetailedHouse> {
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        width: double.infinity,
-        decoration: BoxDecoration(
-            gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                colors: [
-                  Colors.deepOrange,
-                  Colors.orange,
-                  Colors.orange
-                ]
-            )
-        ),
-        child: Column(
-          children: [
-            SizedBox(height: 50,),
-            Row(
+      body: Column(
+        children: [
+          Container(
+            height: 40,
+            margin: EdgeInsets.only(top: 40),
+            padding: EdgeInsets.symmetric(horizontal: 15),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                SizedBox(width: 10,),
-                Icon(Icons.arrow_back_ios_new_outlined,color: Colors.white,),
-                SizedBox(width: 5,),
-                Text('Back',style: TextStyle(color: Colors.white),),
-                SizedBox(width: 250,),
-                Icon(Icons.favorite,color: Colors.white,),
-                SizedBox(width: 10,),
-                Icon(Icons.ios_share,color: Colors.white,)
-
+                Row(
+                  children: [
+                    Icon(
+                      Icons.arrow_back_ios,
+                      color: Colors.grey[600],
+                    ),
+                    Text(
+                      "Back",
+                      style: TextStyle(color: Colors.grey[600]),
+                    )
+                  ],
+                ),
+                Text(
+                  "Details",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Icon(
+                      Icons.favorite_outline,
+                      size: 22,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Icon(
+                      Icons.ios_share_outlined,
+                      size: 20,
+                    )
+                  ],
+                )
               ],
             ),
-            Center(
-              child:Text('Details',style: TextStyle(color: Colors.white,fontSize: 25,fontWeight: FontWeight.bold),),
-            ),
-            SizedBox(height: 20,),
-            Stack(
+          ),
+
+          // lower body
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+            height: 210,
+            width: double.maxFinite,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.blue,
+                image: DecorationImage(
+                    image: AssetImage("lib/assets/house2.png"),
+                    fit: BoxFit.cover)),
+            child: Stack(
+              alignment: Alignment.bottomRight,
               children: [
                 Container(
-                  margin: EdgeInsets.only(left: 10,right: 10),
-                  width: double.maxFinite,
-                  height: 250,
+                  margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  height: 30,
+                  width: 70,
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(20)),
-                    image: DecorationImage(
-                      image: AssetImage('lib/assets/houses.png'),
-                      fit: BoxFit.cover
-                    )
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(top: 200,left: 280),
-                  height: 40,
-                  width: 80,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    borderRadius: BorderRadius.circular(5),
                     color: Colors.white,
                   ),
                   child: Row(
-                    children: [
-                      SizedBox(width: 10,),
-                      Icon(Icons.photo),
-                      SizedBox(width: 10,),
-                      Text('43',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 20),)
-                    ],
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [Icon(Icons.image_rounded), Text("24")],
                   ),
                 )
               ],
             ),
-            SizedBox(height: 20,),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          ),
+
+          // call, massage row
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    color: Colors.grey,
-                  ),
-                  width: 80,
+                  padding: EdgeInsets.symmetric(vertical: 20),
                   height: 90,
+                  width: 80,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 2,
+                          blurRadius: 7,
+                          offset: Offset(0, 3), // changes position of shadow
+                        ),
+                      ]),
                   child: Column(
-                    children: [
-                      SizedBox(height: 17,),
-                      Icon(Icons.call,size: 40,),
-                      Text('Call',style: TextStyle(fontSize:12,color: Colors.white,fontWeight: FontWeight.bold),)
-                    ],
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [Icon(Icons.call), Text("Call")],
                   ),
                 ),
                 Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    color: Colors.grey,
-                  ),
-                  width: 80,
+                  padding: EdgeInsets.symmetric(vertical: 20),
                   height: 90,
+                  width: 80,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 2,
+                          blurRadius: 7,
+                          offset: Offset(0, 3), // changes position of shadow
+                        ),
+                      ]),
                   child: Column(
-                    children: [
-                      SizedBox(height: 17,),
-                      Icon(Icons.message,size: 40,),
-                      Text('Message',style: TextStyle(fontSize:12,color: Colors.white,fontWeight: FontWeight.bold),)
-                    ],
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [Icon(Icons.message_rounded), Text("Message")],
                   ),
                 ),
                 Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    color: Colors.grey,
-                  ),
-                  width: 80,
+                  padding: EdgeInsets.symmetric(vertical: 20),
                   height: 90,
+                  width: 80,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 2,
+                          blurRadius: 7,
+                          offset: Offset(0, 3), // changes position of shadow
+                        ),
+                      ]),
+                      
                   child: Column(
-                    children: [
-                      SizedBox(height: 17,),
-                      Icon(Icons.directions,size: 40,),
-                      Text('Direcction',style: TextStyle(fontSize:12,color: Colors.white,fontWeight: FontWeight.bold),)
-                    ],
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [Icon(Icons.directions_walk), Text("Directions")],
                   ),
                 ),
                 Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    color: Colors.grey,
-                  ),
-                  width: 80,
+                  padding: EdgeInsets.symmetric(vertical: 20),
                   height: 90,
+                  width: 80,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 2,
+                          blurRadius: 7,
+                          offset: Offset(0, 3), // changes position of shadow
+                        ),
+                      ]),
                   child: Column(
-                    children: [
-                      SizedBox(height: 17,),
-                      Icon(Icons.share_outlined,size: 40,),
-                      Text('Share',style: TextStyle(fontSize:12,color: Colors.white,fontWeight: FontWeight.bold),)
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [Icon(Icons.rotate_90_degrees_ccw), Text("Share")
                     ],
                   ),
                 ),
               ],
             ),
-            SizedBox(height: 10,),
-            Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                    ),
-                    height: 40,
-                    width: 120,
-                    child: Center(
-                      child: Text('Overview'),
-                    ),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white54,
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                    ),
-                    height: 40,
-                    width: 120,
-                    child: Center(
-                      child: Text('Features'),
-                    ),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white54,
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                    ),
-                    height: 40,
-                    width: 120,
-                    child: Center(
-                      child: Text('House value'),
-                    ),
-                  ),
-                ],
-              ),
-            SizedBox(
-              height: 10,
-            ),
-            Container(
-              margin: EdgeInsets.only(left: 5,right: 5),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(10)),
-                color: Colors.white,
+          ),
 
-              ),
-              height: 200,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 10,right: 10),
-                child: Text(
-                    'rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr',
-                  style: TextStyle(color: Colors.black,fontSize: 20),
-                ),
-              ),
-            )
-          ],
-        ),
+
+          // overview, features row
+          Container(
+            child: Row(
+              children: [
+                
+              ],
+            ),
+          )
+        ],
       ),
     );
   }
