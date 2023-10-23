@@ -1,5 +1,5 @@
 class Featured {
-  late List<Rooms>_rooms;
+  late List<Rooms> _rooms;
   List<Rooms> get rooms =>_rooms;
 
   Featured({required rooms}){
@@ -14,12 +14,17 @@ class Featured {
       });
     }
   }
+
+
 }
 
 class Rooms {
   int? id;
+  Null? size;
+  int? price;
+  Null? bath;
+  Null? beds;
   String? roomNo;
-  String? plotImage;
   String? overview;
   String? features;
   String? houseValue;
@@ -28,12 +33,15 @@ class Rooms {
   String? bathroom;
   String? bedArea;
   int? plot;
-  int? owner;
+  Null? agent;
 
   Rooms(
       {this.id,
+      this.size,
+      this.price,
+      this.bath,
+      this.beds,
       this.roomNo,
-      this.plotImage,
       this.overview,
       this.features,
       this.houseValue,
@@ -42,12 +50,15 @@ class Rooms {
       this.bathroom,
       this.bedArea,
       this.plot,
-      this.owner});
+      this.agent});
 
   Rooms.fromJson(Map<String, dynamic> json) {
     id = json['id'];
+    size = json['size'];
+    price = json['price'];
+    bath = json['bath'];
+    beds = json['beds'];
     roomNo = json['room_no'];
-    plotImage = json['plot_image'];
     overview = json['overview'];
     features = json['features'];
     houseValue = json['house_value'];
@@ -56,23 +67,8 @@ class Rooms {
     bathroom = json['bathroom'];
     bedArea = json['bedArea'];
     plot = json['plot'];
-    owner = json['owner'];
+    agent = json['agent'];
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['room_no'] = this.roomNo;
-    data['plot_image'] = this.plotImage;
-    data['overview'] = this.overview;
-    data['features'] = this.features;
-    data['house_value'] = this.houseValue;
-    data['livingArea'] = this.livingArea;
-    data['kitchen'] = this.kitchen;
-    data['bathroom'] = this.bathroom;
-    data['bedArea'] = this.bedArea;
-    data['plot'] = this.plot;
-    data['owner'] = this.owner;
-    return data;
-  }
+
 }
