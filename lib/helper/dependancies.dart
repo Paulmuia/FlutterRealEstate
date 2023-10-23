@@ -12,4 +12,5 @@ Future<void> init() async{
   Get.lazyPut(() => FeaturedRepo(apiClient: Get.find()));
 
   Get.lazyPut(() => FeaturedController(featuredRepo: Get.find()));
+  
 }
