@@ -12,7 +12,7 @@ class FeaturedController extends GetxController{
   bool _isLoaded =false;
   bool get isLoaded => _isLoaded;
 
-  int _quantity = 0;
+    int _quantity = 0;
 
   Future<void> getFeaturedList() async {
     Response response = await featuredRepo.getFeaturedList();

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:mm/controllers/featured_controller.dart';
+import 'package:mm/controllers/plot_controller.dart';
+import 'package:mm/models/plot_model.dart';
 import 'package:mm/widgets/app_constants.dart';
 
 class HouseContents extends StatefulWidget {
@@ -45,10 +47,10 @@ class _HouseContentsState extends State<HouseContents> {
                     ],
                   ),
                   Expanded(
-                    child: GetBuilder<FeaturedController>(builder: (featuredProducts){
+                    child: GetBuilder<PlotController>(builder: (plotProducts){
                       return Container(
                       child: ListView.builder(
-                        itemCount: featuredProducts.featuredList.length,
+                        itemCount: plotProducts.plotList.length,
                       
                         itemBuilder: (context,index){
                           return Container(
@@ -58,7 +60,7 @@ class _HouseContentsState extends State<HouseContents> {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.all(Radius.circular(10)),
                               color: Colors.blue,
-                              image: DecorationImage(image: NetworkImage(AppConstants.BASE_URL+featuredProducts.featuredList[index].plotImage),
+                              image: DecorationImage(image: NetworkImage(AppConstants.BASE_URL+plotProducts.plotList[index].image),
                               fit: BoxFit.cover
                               )
                             ),

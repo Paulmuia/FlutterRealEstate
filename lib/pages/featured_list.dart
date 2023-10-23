@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mm/controllers/featured_controller.dart';
+import 'package:mm/controllers/plot_controller.dart';
 import 'package:mm/pages/detailed_house.dart';
 import 'package:mm/widgets/app_constants.dart';
 
@@ -10,9 +11,9 @@ class FeaturedList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: GetBuilder<FeaturedController>(builder: (featuredHouses){
+      child: GetBuilder<PlotController>(builder: (plotHouses){
         return ListView.builder(
-        itemCount: featuredHouses.featuredList.length,
+        itemCount: plotHouses.plotList.length,
         scrollDirection: Axis.horizontal,
         itemBuilder:
        (itemBuilder, index){
@@ -33,7 +34,7 @@ class FeaturedList extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
-                  image: DecorationImage(image: NetworkImage(AppConstants.BASE_URL+featuredHouses.featuredList[index].plotImage),
+                  image: DecorationImage(image: NetworkImage(AppConstants.BASE_URL+plotHouses.plotList[index].image),
                   fit: BoxFit.cover
                   ),
                 ), 

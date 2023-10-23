@@ -2,12 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mm/controllers/featured_controller.dart';
 import 'package:mm/pages/Recommended_list.dart';
-import 'package:mm/pages/detailed_house.dart';
-
 import 'package:mm/pages/featured_list.dart';
-import 'package:mm/pages/house_contents.dart';
 import 'package:mm/pages/house_page.dart';
-
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 

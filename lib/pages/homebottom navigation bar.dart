@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mm/account/acoount_page.dart';
-import 'package:mm/pages/detailed_house.dart';
 import 'package:mm/pages/home_page.dart';
-import 'package:mm/pages/house_contents.dart';
 import 'package:mm/pages/house_page.dart';
 import 'package:mm/pages/search_page.dart';
 

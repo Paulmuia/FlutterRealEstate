@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mm/controllers/plot_controller.dart';
 import 'package:mm/widgets/app_constants.dart';
 
 import '../controllers/featured_controller.dart';
@@ -35,13 +36,13 @@ class _HousePageState extends State<HousePage> {
             ),
       
             Expanded(
-              child: GetBuilder<FeaturedController>(builder: (featuredProducts){
+              child: GetBuilder<PlotController>(builder: (plotProducts){
                 return Container(
                 //color: Colors.green,
                 child: ListView.builder(
-                  itemCount: featuredProducts.featuredList.length,
+                  itemCount: plotProducts.plotList.length,
                     itemBuilder: (context,index){
-                  return featuredProducts.isLoaded?Column(
+                  return plotProducts.isLoaded?Column(
                     children: [
                       Stack(
                         children: [
@@ -52,7 +53,7 @@ class _HousePageState extends State<HousePage> {
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                           color: Colors.white,
                           image: DecorationImage(
-                            image: NetworkImage(AppConstants.BASE_URL+featuredProducts.featuredList[index].plotImage),
+                            image: NetworkImage(AppConstants.BASE_URL+plotProducts.plotList[index].image),
                             fit: BoxFit.cover,
                           )
                         ),

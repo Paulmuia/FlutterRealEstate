@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mm/controllers/featured_controller.dart';
+import 'package:mm/controllers/plot_controller.dart';
 import 'package:mm/pages/detailed_house.dart';
-import 'package:mm/pages/house_contents.dart';
 import 'package:mm/widgets/app_constants.dart';
 
 class RecommendeList extends StatelessWidget {
@@ -10,10 +10,10 @@ class RecommendeList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<FeaturedController>(builder: (featuredProducts){
+    return GetBuilder<PlotController>(builder: (plotProducts){
       return Container(
       child: ListView.builder(
-        itemCount: featuredProducts.featuredList.length,
+        itemCount: plotProducts.plotList.length,
         scrollDirection: Axis.horizontal,
         itemBuilder:
        (itemBuilder, index){
@@ -35,7 +35,7 @@ class RecommendeList extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
-                  image:  DecorationImage(image: NetworkImage(AppConstants.BASE_URL+featuredProducts.featuredList[index].plotImage),
+                  image:  DecorationImage(image: NetworkImage(AppConstants.BASE_URL+plotProducts.plotList[index].image),
                   fit: BoxFit.cover
                   ),
                 ), 

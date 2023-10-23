@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mm/pages/home_page.dart';
-import 'package:mm/auth/verificationscreen.dart';
 
 
 class WelcomePage extends StatefulWidget {
