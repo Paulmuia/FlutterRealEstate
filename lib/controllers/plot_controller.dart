@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
-import 'package:mm/data/repository/featured_repo.dart';
 import 'package:mm/data/repository/plot_repo.dart';
-import 'package:mm/models/featured_model.dart';
+
 import 'package:mm/models/plot_model.dart';
 
 class PlotController extends GetxController{
