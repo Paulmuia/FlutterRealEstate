@@ -100,7 +100,7 @@ class _WelcomePageState extends State<WelcomePage> {
                           hintStyle: TextStyle(
                               color: Colors.black, fontWeight: FontWeight.w400),
                           labelText: 'Enter Password',
-                          prefixIcon: Icon(Icons.email, color: Colors.green),
+                          prefixIcon: Icon(Icons.password, color: Colors.green),
                           focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
                               borderSide: BorderSide(

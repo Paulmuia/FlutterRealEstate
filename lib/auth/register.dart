@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:mm/pages/welcome_page.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -29,7 +28,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
                 child: Center(
                     child: Text(
-                  'Welcome',
+                  'Get your favourite house',
                   style: TextStyle(
                       fontSize: 30,
                       color: Colors.white,
@@ -98,7 +97,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             color: Colors.black,
                           ),
                           labelText: 'Enter username',
-                          prefixIcon: Icon(Icons.email, color: Colors.green),
+                          prefixIcon: Icon(Icons.person, color: Colors.green),
                           focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
                               borderSide: BorderSide(
@@ -128,7 +127,36 @@ class _RegisterPageState extends State<RegisterPage> {
                           hintStyle: TextStyle(
                               color: Colors.black, fontWeight: FontWeight.w400),
                           labelText: 'Enter Password',
-                          prefixIcon: Icon(Icons.email, color: Colors.green),
+                          prefixIcon: Icon(Icons.password, color: Colors.green),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15),
+                              borderSide: BorderSide(
+                                width: 1.0,
+                                color: Color.fromARGB(255, 2, 35, 63),
+                              )),
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15),
+                              borderSide: BorderSide(
+                                width: 1.0,
+                                color: Color.fromARGB(255, 2, 35, 63),
+                              )),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 10,),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: ' Enter phone number',
+                          hintStyle: TextStyle(
+                            color: Colors.black,
+                          ),
+                          labelText: 'Enter phone number',
+                          prefixIcon: Icon(Icons.phone, color: Colors.green),
                           focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
                               borderSide: BorderSide(
