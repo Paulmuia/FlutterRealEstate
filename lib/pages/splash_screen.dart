@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mm/auth/register.dart';
 import 'package:mm/pages/homebottom%20navigation%20bar.dart';
+import 'package:mm/pages/welcome_page.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -24,7 +25,7 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
 
   Timer(
     Duration(seconds: 5),
-    ()=>Get.off(RegisterPage()) 
+    ()=>Get.off(WelcomePage()) 
   );
  }
   @override

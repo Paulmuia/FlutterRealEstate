@@ -43,7 +43,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                   borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(40),
                       bottomRight: Radius.circular(40)),
-                  color: Color.fromARGB(255, 2, 35, 63),),
+                  color: Colors.green),
               child: Center(
                   child: Text(
                 'Verify phone number',
@@ -54,7 +54,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
               )),
             ),
             Container(
-              height: 500,
+              height: 400,
               width: double.maxFinite,
               margin: EdgeInsets.only(top: 230, left: 10, right: 10),
               decoration: BoxDecoration(
@@ -143,7 +143,8 @@ class _VerificationScreenState extends State<VerificationScreen> {
                       width: double.maxFinite,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(15)),
-                          color: Color.fromARGB(255, 2, 35, 63),),
+                          color: Colors.green,
+                          ),
                       child: Center(
                         child: Text(
                           'Verify',
