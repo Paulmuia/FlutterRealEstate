@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mm/auth/register.dart';
+import 'package:mm/auth/verificationscreen.dart';
 import 'package:mm/pages/homebottom%20navigation%20bar.dart';
 
 
@@ -49,7 +51,7 @@ class _WelcomePageState extends State<WelcomePage> {
                       height: 10,
                     ),
                     Text(
-                      'Register',
+                      'Login',
                       style: TextStyle(
                           fontSize: 30,
                           color: Colors.green,
@@ -86,37 +88,7 @@ class _WelcomePageState extends State<WelcomePage> {
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: TextField(
-                        decoration: InputDecoration(
-                          hintText: ' Enter username',
-                          hintStyle: TextStyle(
-                            color: Colors.black,
-                          ),
-                          labelText: 'Enter username',
-                          prefixIcon: Icon(Icons.email, color: Colors.green),
-                          focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15),
-                              borderSide: BorderSide(
-                                width: 1.0,
-                                color: Color.fromARGB(255, 2, 35, 63),
-                              )),
-                          enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15),
-                              borderSide: BorderSide(
-                                width: 1.0,
-                                color: Color.fromARGB(255, 2, 35, 63),
-                              )),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                        ),
-                      ),
-                    ),
+                    
                     SizedBox(
                       height: 10,
                     ),
@@ -147,8 +119,22 @@ class _WelcomePageState extends State<WelcomePage> {
                         ),
                       ),
                     ),
+                    SizedBox(height: 10,),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 100),
+                      child: GestureDetector(
+                        onTap: () {
+                        print("...Go to login Screen");
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => VerificationScreen(),
+                          ),
+                        );
+                      },
+                        child: Text('Forgot Password',style: TextStyle(color: Colors.blue,fontSize: 16))),
+                    ),
                     SizedBox(
-                      height: 30,
+                      height: 20,
                     ),
                     GestureDetector(
                       onTap: () {
@@ -168,7 +154,7 @@ class _WelcomePageState extends State<WelcomePage> {
                             color: Colors.green),
                         child: Center(
                           child: Text(
-                            'Register',
+                            'Login',
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 25,
@@ -184,15 +170,25 @@ class _WelcomePageState extends State<WelcomePage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Already a member.',
+                          'Dont have an account.',
                           style: TextStyle(fontSize: 15),
                         ),
-                        Text(
-                          '    Login ',
-                          style: TextStyle(
-                              fontSize: 18,
-                              color: Colors.blue,
-                              fontWeight: FontWeight.w500),
+                        GestureDetector(
+                          onTap: () {
+                        print("...Go to login Screen");
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => RegisterPage(),
+                          ),
+                        );
+                      },
+                          child: Text(
+                            '    Register ',
+                            style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.blue,
+                                fontWeight: FontWeight.w500),
+                          ),
                         ),
                       ],
                     ),

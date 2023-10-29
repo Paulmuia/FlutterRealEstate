@@ -187,12 +187,22 @@ class _RegisterPageState extends State<RegisterPage> {
                           'Already a member.',
                           style: TextStyle(fontSize: 15),
                         ),
-                        Text(
-                          '    Login ',
-                          style: TextStyle(
-                              fontSize: 18,
-                              color: Colors.blue,
-                              fontWeight: FontWeight.w500),
+                        GestureDetector(
+                          onTap: () {
+                        print("...Go to login Screen");
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => WelcomePage(),
+                          ),
+                        );
+                      },
+                          child: Text(
+                            '    Login ',
+                            style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.blue,
+                                fontWeight: FontWeight.w500),
+                          ),
                         ),
                       ],
                     ),
