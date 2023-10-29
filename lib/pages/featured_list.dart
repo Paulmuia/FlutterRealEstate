@@ -12,7 +12,8 @@ class FeaturedList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: GetBuilder<PlotController>(builder: (plotHouses){
-        return ListView.builder(
+      return GetBuilder<FeaturedController>(builder: (featuredProducts){
+          return ListView.builder(
         itemCount: plotHouses.plotList.length,
         scrollDirection: Axis.horizontal,
         itemBuilder:
@@ -50,35 +51,36 @@ class FeaturedList extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text("Kirimi, CA, NY", style: TextStyle(
+                   Text(plotHouses.plotList[index].name,
+                   style: TextStyle(
                     fontSize: 16, 
                     fontWeight: FontWeight.bold
                   ),),
-                  const Row(
+                   Row(
                     children: [
                       Icon(Icons.pin_drop_outlined),
-                      Text("Meru,  Nchiru", style: TextStyle(color: Colors.black38),),
+                      Text(plotHouses.plotList[index].location, style: TextStyle(color: const Color.fromRGBO(0, 0, 0, 0.38)),),
                     ],
                   ),
-                  const Row(
+                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Row(
                         children: [
                           Icon(Icons.bed,color: Colors.green),
-                          Text("4 Beds",style: TextStyle(color: Colors.black38),)
+                         Text("${featuredProducts.featuredList[index].beds}Beds",style: TextStyle(color: Colors.black38),)
                         ],
                       ),
                       Row(
                         children: [
                           Icon(Icons.bathtub, color: Colors.green,),
-                          Text("Bath",style: TextStyle(color: Colors.black38),),
+                          Text("${featuredProducts.featuredList[index].bath}Bath",style: TextStyle(color: Colors.black38),),
                         ],
                       ),
                       Row(
                         children: [
                           Icon(Icons.area_chart_rounded,color: Colors.green),
-                          Text("12 sqft", style: TextStyle(color: Colors.black38),)
+                         Text("${featuredProducts.featuredList[index].size}sqft", style: TextStyle(color: Colors.black38),)
                         ],
                       )
 
@@ -105,6 +107,7 @@ class FeaturedList extends StatelessWidget {
           ],
         );
       });
+     });
       })
     );
   }

@@ -20,8 +20,8 @@ class Plot {
 class Plots {
   int? id;
   String? name;
-  Null? location;
-  Null? image;
+ String? location;
+   String? image;
 
   Plots({this.id, this.name, this.location, this.image});
 

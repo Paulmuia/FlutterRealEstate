@@ -13,9 +13,11 @@ Future<void> init() async{
   //repos
   Get.lazyPut(() => FeaturedRepo(apiClient: Get.find()));
 
-  Get.lazyPut(() => FeaturedController(featuredRepo: Get.find()));
-
   Get.lazyPut(() => PlotRepo(apiClient: Get.find()));
 
+
+  Get.lazyPut(() => FeaturedController(featuredRepo: Get.find()));
+
+  
   Get.lazyPut(() => PlotController(plotRepo: Get.find()));
 }

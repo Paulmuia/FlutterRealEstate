@@ -3,7 +3,7 @@ class Featured {
   List<Rooms> get rooms =>_rooms;
 
   Featured({required rooms}){
-    this._rooms=rooms;
+    this.rooms;
   }
 
   Featured.fromJson(Map<String, dynamic> json) {
@@ -15,15 +15,14 @@ class Featured {
     }
   }
 
-
 }
 
 class Rooms {
   int? id;
-  Null? size;
+  int? size;
   int? price;
-  Null? bath;
-  Null? beds;
+  int? bath;
+  int? beds;
   String? roomNo;
   String? overview;
   String? features;
@@ -33,7 +32,7 @@ class Rooms {
   String? bathroom;
   String? bedArea;
   int? plot;
-  Null? agent;
+  int? agent;
 
   Rooms(
       {this.id,
@@ -69,6 +68,5 @@ class Rooms {
     plot = json['plot'];
     agent = json['agent'];
   }
-
 
 }

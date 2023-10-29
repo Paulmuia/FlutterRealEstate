@@ -6,8 +6,8 @@ class FeaturedController extends GetxController{
   final FeaturedRepo featuredRepo;
 
   FeaturedController({required this.featuredRepo});
-  List<dynamic> _fraturedList = [];
-  List<dynamic> get featuredList => _fraturedList;
+  List<dynamic> _featuredList = [];
+  List<dynamic> get featuredList => _featuredList;
 
   bool _isLoaded =false;
   bool get isLoaded => _isLoaded;
@@ -19,9 +19,9 @@ class FeaturedController extends GetxController{
     if (response.statusCode ==200) {
       print("kidogo tu");
       // print("This is response ${response.body}");
-      _fraturedList =[];
-      _fraturedList.addAll(Featured.fromJson(response.body).rooms);
-      print(_fraturedList);
+      _featuredList =[];
+     _featuredList.addAll(Featured.fromJson(response.body).rooms);
+      print(_featuredList);
       _isLoaded = true;
       update();
     }else {
