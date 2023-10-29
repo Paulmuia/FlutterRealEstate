@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mm/auth/register.dart';
 import 'package:mm/pages/homebottom%20navigation%20bar.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -23,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
 
   Timer(
     Duration(seconds: 5),
-    ()=>Get.off(HomeBottomNavigationBar()) 
+    ()=>Get.off(RegisterPage()) 
   );
  }
   @override
