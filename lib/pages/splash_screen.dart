@@ -2,8 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mm/auth/register.dart';
-import 'package:mm/pages/homebottom%20navigation%20bar.dart';
 import 'package:mm/pages/welcome_page.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -36,7 +34,7 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           ScaleTransition(scale: animation,
-          child: Center(child: Image.asset('lib/assets/house13.jpg',width: 250,))),
+          child: Center(child: Image.asset('lib/assets/lp.jpg',width: 250,))),
           //SizedBox(height: 15,),
           ScaleTransition(scale: animation,
           child: Center(child: Text('The Best Houses',style: TextStyle(color: Colors.green,fontSize: 25,fontWeight: FontWeight.w700,fontStyle: FontStyle.italic),)))

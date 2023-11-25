@@ -20,13 +20,13 @@ class _RegisterPageState extends State<RegisterPage> {
               Container(
                 height: 270,
                 width: double.maxFinite,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(40),
                       bottomRight: Radius.circular(40)),
                   color: Colors.green,
                 ),
-                child: Center(
+                child: const Center(
                     child: Text(
                   'Get your favourite house',
                   style: TextStyle(
@@ -38,23 +38,23 @@ class _RegisterPageState extends State<RegisterPage> {
               Container(
                 height: 600,
                 width: double.maxFinite,
-                margin: EdgeInsets.only(top: 230, left: 10, right: 10),
-                decoration: BoxDecoration(
+                margin: const EdgeInsets.only(top: 230, left: 10, right: 10),
+                decoration: const BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(20)),
                     color: Colors.white),
                 child: Column(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
-                    Text(
+                    const Text(
                       'Register',
                       style: TextStyle(
                           fontSize: 30,
                           color: Colors.green,
                           fontWeight: FontWeight.w700),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Padding(
@@ -62,20 +62,20 @@ class _RegisterPageState extends State<RegisterPage> {
                       child: TextField(
                         decoration: InputDecoration(
                           hintText: ' Enter email',
-                          hintStyle: TextStyle(
+                          hintStyle: const TextStyle(
                             color: Colors.black,
                           ),
                           labelText: 'Enter email',
-                          prefixIcon: Icon(Icons.email, color: Colors.green),
+                          prefixIcon: const Icon(Icons.email, color: Colors.green),
                           focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 width: 1.0,
                                 color: Color.fromARGB(255, 2, 35, 63),
                               )),
                           enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 width: 1.0,
                                 color: Color.fromARGB(255, 2, 35, 63),
                               )),
@@ -85,7 +85,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Padding(
@@ -93,20 +93,20 @@ class _RegisterPageState extends State<RegisterPage> {
                       child: TextField(
                         decoration: InputDecoration(
                           hintText: ' Enter username',
-                          hintStyle: TextStyle(
+                          hintStyle: const TextStyle(
                             color: Colors.black,
                           ),
                           labelText: 'Enter username',
-                          prefixIcon: Icon(Icons.person, color: Colors.green),
+                          prefixIcon: const Icon(Icons.person, color: Colors.green),
                           focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 width: 1.0,
                                 color: Color.fromARGB(255, 2, 35, 63),
                               )),
                           enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 width: 1.0,
                                 color: Color.fromARGB(255, 2, 35, 63),
                               )),
@@ -116,27 +116,28 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: TextField(
+                        obscureText: true,
                         decoration: InputDecoration(
                           hintText: ' Enter Password',
-                          hintStyle: TextStyle(
+                          hintStyle: const TextStyle(
                               color: Colors.black, fontWeight: FontWeight.w400),
                           labelText: 'Enter Password',
-                          prefixIcon: Icon(Icons.password, color: Colors.green),
+                          prefixIcon: const Icon(Icons.password, color: Colors.green),
                           focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 width: 1.0,
                                 color: Color.fromARGB(255, 2, 35, 63),
                               )),
                           enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 width: 1.0,
                                 color: Color.fromARGB(255, 2, 35, 63),
                               )),
@@ -146,26 +147,26 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 10,),
+                    const SizedBox(height: 10,),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: TextField(
                         decoration: InputDecoration(
                           hintText: ' Enter phone number',
-                          hintStyle: TextStyle(
+                          hintStyle: const TextStyle(
                             color: Colors.black,
                           ),
                           labelText: 'Enter phone number',
-                          prefixIcon: Icon(Icons.phone, color: Colors.green),
+                          prefixIcon: const Icon(Icons.phone, color: Colors.green),
                           focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 width: 1.0,
                                 color: Color.fromARGB(255, 2, 35, 63),
                               )),
                           enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 width: 1.0,
                                 color: Color.fromARGB(255, 2, 35, 63),
                               )),
@@ -175,7 +176,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 30,
                     ),
                     GestureDetector(
@@ -183,18 +184,18 @@ class _RegisterPageState extends State<RegisterPage> {
                         print("...Go to login Screen");
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (context) => WelcomePage(),
+                            builder: (context) => const WelcomePage(),
                           ),
                         );
                       },
                       child: Container(
-                        margin: EdgeInsets.symmetric(horizontal: 60),
+                        margin: const EdgeInsets.symmetric(horizontal: 60),
                         height: 50,
                         width: double.maxFinite,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(15)),
                             color: Colors.green),
-                        child: Center(
+                        child: const Center(
                           child: Text(
                             'Register',
                             style: TextStyle(
@@ -205,13 +206,13 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
+                        const Text(
                           'Already a member.',
                           style: TextStyle(fontSize: 15),
                         ),
@@ -220,11 +221,11 @@ class _RegisterPageState extends State<RegisterPage> {
                         print("...Go to login Screen");
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (context) => WelcomePage(),
+                            builder: (context) => const WelcomePage(),
                           ),
                         );
                       },
-                          child: Text(
+                          child: const Text(
                             '    Login ',
                             style: TextStyle(
                                 fontSize: 18,
@@ -234,21 +235,21 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
-                    Divider(
+                    const Divider(
                       height: 10,
                       thickness: 1,
                       color: Colors.green,
                       indent: 10,
                       endIndent: 10,
                     ),
-                    Text('Or continue with'),
-                    SizedBox(
+                    const Text('Or continue with'),
+                    const SizedBox(
                       height: 10,
                     ),
-                    SizedBox(height: 10,),
+                    const SizedBox(height: 10,),
                     Container(
                       height: 60,
                       width: double.maxFinite,
@@ -257,10 +258,10 @@ class _RegisterPageState extends State<RegisterPage> {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Container(
-                              padding: EdgeInsets.only(left: 10),
+                              padding: const EdgeInsets.only(left: 10),
                               height: 70,
                               width: 150,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(20)),
                                 color: Colors.white,
@@ -280,14 +281,14 @@ class _RegisterPageState extends State<RegisterPage> {
                                 Container(
                                   height: 50,
                                   width: 50,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                       shape: BoxShape.circle,
                                       image: DecorationImage(
                                           image: AssetImage(
                                               'lib/assets/goo.png'),
                                           fit: BoxFit.cover)),
                                 ),
-                                Text(
+                                const Text(
                                   'Google',
                                   style: TextStyle(fontSize: 18,fontWeight: FontWeight.w500),
                                 )
@@ -296,7 +297,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             Container(
                               height: 70,
                               width: 160,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(20)),
                                 color: Colors.white,
@@ -317,14 +318,14 @@ class _RegisterPageState extends State<RegisterPage> {
                                     Container(
                                       height: 50,
                                       width: 50,
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                           shape: BoxShape.circle,
                                           image: DecorationImage(
                                               image: AssetImage(
                                                   'lib/assets/fb.png'),
                                               fit: BoxFit.cover)),
                                     ),
-                                    Text(
+                                    const Text(
                                       'Facebook',
                                       style: TextStyle(fontSize: 18,fontWeight: FontWeight.w500),
                                     )

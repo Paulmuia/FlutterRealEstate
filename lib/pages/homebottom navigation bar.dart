@@ -4,6 +4,7 @@ import 'package:mm/pages/home_page.dart';
 import 'package:mm/pages/house_page.dart';
 import 'package:mm/pages/search_page.dart';
 
+
 class HomeBottomNavigationBar extends StatefulWidget {
   const HomeBottomNavigationBar({super.key});
 
@@ -47,7 +48,7 @@ class _HomeBottomNavigationBarState extends State<HomeBottomNavigationBar> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.home_outlined,),
-            label: 'Home'
+            label: 'Houses'
             
           ),
           BottomNavigationBarItem(

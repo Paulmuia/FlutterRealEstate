@@ -23,7 +23,7 @@ class _WelcomePageState extends State<WelcomePage> {
               Container(
                 height: 270,
                 width: double.maxFinite,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(40),
                       bottomRight: Radius.circular(40)),
@@ -95,6 +95,7 @@ class _WelcomePageState extends State<WelcomePage> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: TextField(
+                        obscureText: true,
                         decoration: InputDecoration(
                           hintText: ' Enter Password',
                           hintStyle: TextStyle(

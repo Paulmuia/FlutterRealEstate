@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:mm/controllers/featured_controller.dart';
 import 'package:mm/controllers/plot_controller.dart';
-import 'package:mm/models/plot_model.dart';
 import 'package:mm/widgets/app_constants.dart';
 
 class HouseContents extends StatefulWidget {
