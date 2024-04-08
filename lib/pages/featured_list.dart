@@ -22,15 +22,14 @@ class FeaturedList extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: (){
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => const DetailedHouse(),
-                    ),
-                  );
+                   Get.to(DetailedHouse(),
+                        arguments: {
+                          'image': AppConstants.BASE_URL + plotHouses.plotList[index].image,
+                        });
                 },
               child: Container(
                 margin: EdgeInsets.symmetric(horizontal: 10),
-                width: 200,
+                width: 210,
                 height: 120,
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -45,7 +44,7 @@ class FeaturedList extends StatelessWidget {
             Container(
               padding: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
               height: 120,
-              width: 200,
+              width: 210,
               // color: Colors.white,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

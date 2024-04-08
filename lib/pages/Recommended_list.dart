@@ -22,16 +22,14 @@ class RecommendeList extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: (){
-                         print("...Go to login Screen");
-                         Navigator.of(context).push(
-                           MaterialPageRoute(
-                             builder: (context) => DetailedHouse(),
-                           ),
-                         );
+                        Get.to(DetailedHouse(),
+                        arguments: {
+                          'image': AppConstants.BASE_URL + plotProducts.plotList[index].image,
+                        });
                        },
               child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 10),
-                width: 200,
+                margin: const EdgeInsets.symmetric(horizontal: 10),
+                width: 210,
                 height: 120,
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -44,22 +42,22 @@ class RecommendeList extends StatelessWidget {
               ),
             ),
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
               height: 120,
-              width: 200,
+              width: 210,
               // color: Colors.white,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                   Text(plotProducts.plotList[index].name, style: TextStyle(
+                   Text(plotProducts.plotList[index].name, style: const TextStyle(
                     fontSize: 16, 
                     fontWeight: FontWeight.bold
                   ),),
                    Row(
                     children: [
-                      Icon(Icons.pin_drop_outlined),
-                      Text(plotProducts.plotList[index].location, style: TextStyle(color: Colors.black38),),
+                      const Icon(Icons.pin_drop_outlined),
+                      Text(plotProducts.plotList[index].location, style: const TextStyle(color: Colors.black38),),
                     ],
                   ),
                    Row(
@@ -67,20 +65,20 @@ class RecommendeList extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          Icon(Icons.bed,color: Colors.green),
-                          Text("${featuredHouses.featuredList[index].beds}Beds",style: TextStyle(color: Colors.black38),)
+                          const Icon(Icons.bed,color: Colors.green),
+                          Text("${featuredHouses.featuredList[index].beds}Beds",style: const TextStyle(color: Colors.black38),)
                         ],
                       ),
                       Row(
                         children: [
-                          Icon(Icons.bathtub, color: Colors.green,),
-                          Text("${featuredHouses.featuredList[index].bath}Bath",style: TextStyle(color: Colors.black38),),
+                          const Icon(Icons.bathtub, color: Colors.green,),
+                          Text("${featuredHouses.featuredList[index].bath}Bath",style: const TextStyle(color: Colors.black38),),
                         ],
                       ),
                       Row(
                         children: [
-                          Icon(Icons.area_chart_rounded,color: Colors.green),
-                          Text("${featuredHouses.featuredList[index].size}sqft", style: TextStyle(color: Colors.black38),)
+                          const Icon(Icons.area_chart_rounded,color: Colors.green),
+                          Text("${featuredHouses.featuredList[index].size}sqft", style: const TextStyle(color: Colors.black38),)
                         ],
                       )
 
@@ -95,10 +93,10 @@ class RecommendeList extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: Colors.green,
                         borderRadius: BorderRadius.circular(15),
-                        image: DecorationImage(image: AssetImage("lib/assets/paul.png"))
+                        image: const DecorationImage(image: AssetImage("lib/assets/paul.png"))
                       ),
                       ),
-                      Text("    John Adam", style: TextStyle(fontWeight: FontWeight.w700),)
+                      const Text("    John Adam", style: TextStyle(fontWeight: FontWeight.w700),)
                     ],
                   )
                 ],

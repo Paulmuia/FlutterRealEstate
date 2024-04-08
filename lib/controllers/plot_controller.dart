@@ -13,6 +13,7 @@ class PlotController extends GetxController{
   bool _isLoaded =false;
   bool get isLoaded => _isLoaded;
 
+    // ignore: unused_field
     int _quantity = 0;
 
   Future<void> getPlotList() async {

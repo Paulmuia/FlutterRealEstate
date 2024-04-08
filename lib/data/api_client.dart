@@ -6,6 +6,7 @@ class ApiClient extends GetConnect implements GetxService{
   late String token;
   final String appBaseUrl;
 
+  // ignore: unused_field
   late Map<String, String> _mainHeaders;
 
   ApiClient({required this.appBaseUrl}){

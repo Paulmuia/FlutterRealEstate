@@ -1,6 +1,6 @@
 import 'package:get/get_connect.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_disposable.dart';
-import 'package:mm/data/repository/api_client.dart';
+import 'package:mm/data/api_client.dart';
 import 'package:mm/widgets/app_constants.dart';
 
 class FeaturedRepo extends GetxService{

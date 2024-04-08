@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mm/auth/register.dart';
-import 'package:mm/auth/verificationscreen.dart';
-import 'package:mm/pages/homebottom%20navigation%20bar.dart';
-
+import 'package:mm/auth/Auth_controllers/auth_controller.dart';
+import 'package:mm/auth/auth_Pages/register.dart';
+import 'package:mm/auth/auth_Pages/verificationscreen.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
@@ -12,6 +11,9 @@ class WelcomePage extends StatefulWidget {
 }
 
 class _WelcomePageState extends State<WelcomePage> {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  bool passwordVisible = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +31,7 @@ class _WelcomePageState extends State<WelcomePage> {
                       bottomRight: Radius.circular(40)),
                   color: Colors.green,
                 ),
-                child: Center(
+                child: const Center(
                     child: Text(
                   'Welcome',
                   style: TextStyle(
@@ -41,44 +43,46 @@ class _WelcomePageState extends State<WelcomePage> {
               Container(
                 height: 600,
                 width: double.maxFinite,
-                margin: EdgeInsets.only(top: 230, left: 10, right: 10),
-                decoration: BoxDecoration(
+                margin: const EdgeInsets.only(top: 230, left: 10, right: 10),
+                decoration: const BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(20)),
                     color: Colors.white),
                 child: Column(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
-                    Text(
+                    const Text(
                       'Login',
                       style: TextStyle(
                           fontSize: 30,
                           color: Colors.green,
                           fontWeight: FontWeight.w700),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: TextField(
+                        controller: emailController,
                         decoration: InputDecoration(
                           hintText: ' Enter email',
-                          hintStyle: TextStyle(
+                          hintStyle: const TextStyle(
                             color: Colors.black,
                           ),
                           labelText: 'Enter email',
-                          prefixIcon: Icon(Icons.email, color: Colors.green),
+                          prefixIcon:
+                              const Icon(Icons.email, color: Colors.green),
                           focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 width: 1.0,
                                 color: Color.fromARGB(255, 2, 35, 63),
                               )),
                           enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 width: 1.0,
                                 color: Color.fromARGB(255, 2, 35, 63),
                               )),
@@ -88,29 +92,43 @@ class _WelcomePageState extends State<WelcomePage> {
                         ),
                       ),
                     ),
-                    
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: TextField(
+                        controller: passwordController,
                         obscureText: true,
                         decoration: InputDecoration(
                           hintText: ' Enter Password',
-                          hintStyle: TextStyle(
+                          hintStyle: const TextStyle(
                               color: Colors.black, fontWeight: FontWeight.w400),
                           labelText: 'Enter Password',
-                          prefixIcon: Icon(Icons.password, color: Colors.green),
+                          suffixIcon: IconButton(
+                            icon: Icon(
+                              passwordVisible
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                              color: Colors.green,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                passwordVisible = !passwordVisible;
+                              });
+                            },
+                          ),
+                          prefixIcon:
+                              const Icon(Icons.password, color: Colors.green),
                           focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 width: 1.0,
                                 color: Color.fromARGB(255, 2, 35, 63),
                               )),
                           enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 width: 1.0,
                                 color: Color.fromARGB(255, 2, 35, 63),
                               )),
@@ -120,40 +138,41 @@ class _WelcomePageState extends State<WelcomePage> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 10,),
+                    const SizedBox(
+                      height: 10,
+                    ),
                     Padding(
                       padding: const EdgeInsets.only(left: 100),
                       child: GestureDetector(
-                        onTap: () {
-                        print("...Go to login Screen");
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => VerificationScreen(),
-                          ),
-                        );
-                      },
-                        child: Text('Forgot Password',style: TextStyle(color: Colors.blue,fontSize: 16))),
+                          onTap: () {
+                            print("...Go to login Screen");
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const VerificationScreen(),
+                              ),
+                            );
+                          },
+                          child: const Text('Forgot Password',
+                              style:
+                                  TextStyle(color: Colors.blue, fontSize: 16))),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     GestureDetector(
                       onTap: () {
-                        print("...Go to login Screen");
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => HomeBottomNavigationBar(),
-                          ),
-                        );
+                         AuthController.instance.login(emailController.text.trim(),
+                    passwordController.text.trim());
                       },
                       child: Container(
-                        margin: EdgeInsets.symmetric(horizontal: 60),
+                        margin: const EdgeInsets.symmetric(horizontal: 60),
                         height: 50,
                         width: double.maxFinite,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(15)),
                             color: Colors.green),
-                        child: Center(
+                        child: const Center(
                           child: Text(
                             'Login',
                             style: TextStyle(
@@ -164,26 +183,26 @@ class _WelcomePageState extends State<WelcomePage> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
+                        const Text(
                           'Dont have an account.',
                           style: TextStyle(fontSize: 15),
                         ),
                         GestureDetector(
                           onTap: () {
-                        print("...Go to login Screen");
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => RegisterPage(),
-                          ),
-                        );
-                      },
-                          child: Text(
+                            print("...Go to login Screen");
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => RegisterPage(),
+                              ),
+                            );
+                          },
+                          child: const Text(
                             '    Register ',
                             style: TextStyle(
                                 fontSize: 18,
@@ -193,21 +212,23 @@ class _WelcomePageState extends State<WelcomePage> {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
-                    Divider(
+                    const Divider(
                       height: 10,
                       thickness: 1,
                       color: Colors.green,
                       indent: 10,
                       endIndent: 10,
                     ),
-                    Text('Or continue with'),
-                    SizedBox(
+                    const Text('Or continue with'),
+                    const SizedBox(
                       height: 10,
                     ),
-                    SizedBox(height: 10,),
+                    const SizedBox(
+                      height: 10,
+                    ),
                     Container(
                       height: 60,
                       width: double.maxFinite,
@@ -216,46 +237,48 @@ class _WelcomePageState extends State<WelcomePage> {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Container(
-                              padding: EdgeInsets.only(left: 10),
+                              padding: const EdgeInsets.only(left: 10),
                               height: 70,
                               width: 150,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(20)),
                                 color: Colors.white,
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.grey, // Color of the shadow
-                                    offset: Offset(
-                                        0, 3), // Offset of the shadow (x, y)
-                                    blurRadius: 6, // Amount of blur
-                                    spreadRadius: 0, // Amount of spread
+                                    color: Colors.grey,
+                                    offset: Offset(0, 3),
+                                    blurRadius: 6,
+                                    spreadRadius: 0,
                                   ),
                                 ],
                               ),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-                                Container(
-                                  height: 50,
-                                  width: 50,
-                                  decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      image: DecorationImage(
-                                          image: AssetImage(
-                                              'lib/assets/goo.png'),
-                                          fit: BoxFit.cover)),
-                                ),
-                                Text(
-                                  'Google',
-                                  style: TextStyle(fontSize: 18,fontWeight: FontWeight.w500),
-                                )
-                              ]),
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Container(
+                                      height: 50,
+                                      width: 50,
+                                      decoration: const BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          image: DecorationImage(
+                                              image: AssetImage(
+                                                  'lib/assets/goo.png'),
+                                              fit: BoxFit.cover)),
+                                    ),
+                                    const Text(
+                                      'Google',
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w500),
+                                    )
+                                  ]),
                             ),
                             Container(
                               height: 70,
                               width: 160,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(20)),
                                 color: Colors.white,
@@ -276,16 +299,18 @@ class _WelcomePageState extends State<WelcomePage> {
                                     Container(
                                       height: 50,
                                       width: 50,
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                           shape: BoxShape.circle,
                                           image: DecorationImage(
                                               image: AssetImage(
                                                   'lib/assets/fb.png'),
                                               fit: BoxFit.cover)),
                                     ),
-                                    Text(
+                                    const Text(
                                       'Facebook',
-                                      style: TextStyle(fontSize: 18,fontWeight: FontWeight.w500),
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w500),
                                     )
                                   ]),
                             ),

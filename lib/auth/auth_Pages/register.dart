@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mm/pages/welcome_page.dart';
+import 'package:mm/auth/Auth_controllers/auth_controller.dart';
+import 'package:mm/auth/auth_Pages/welcome_page.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -9,6 +10,10 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  bool passwordVisible = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,40 +62,12 @@ class _RegisterPageState extends State<RegisterPage> {
                     const SizedBox(
                       height: 20,
                     ),
+                   
+        
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: TextField(
-                        decoration: InputDecoration(
-                          hintText: ' Enter email',
-                          hintStyle: const TextStyle(
-                            color: Colors.black,
-                          ),
-                          labelText: 'Enter email',
-                          prefixIcon: const Icon(Icons.email, color: Colors.green),
-                          focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15),
-                              borderSide: const BorderSide(
-                                width: 1.0,
-                                color: Color.fromARGB(255, 2, 35, 63),
-                              )),
-                          enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15),
-                              borderSide: const BorderSide(
-                                width: 1.0,
-                                color: Color.fromARGB(255, 2, 35, 63),
-                              )),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: TextField(
+                        controller: usernameController,
                         decoration: InputDecoration(
                           hintText: ' Enter username',
                           hintStyle: const TextStyle(
@@ -119,16 +96,17 @@ class _RegisterPageState extends State<RegisterPage> {
                     const SizedBox(
                       height: 10,
                     ),
-                    Padding(
+                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: TextField(
-                        obscureText: true,
+                        controller: emailController,
                         decoration: InputDecoration(
-                          hintText: ' Enter Password',
+                          hintText: ' Enter email',
                           hintStyle: const TextStyle(
-                              color: Colors.black, fontWeight: FontWeight.w400),
-                          labelText: 'Enter Password',
-                          prefixIcon: const Icon(Icons.password, color: Colors.green),
+                            color: Colors.black,
+                          ),
+                          labelText: 'Enter email',
+                          prefixIcon: const Icon(Icons.email, color: Colors.green),
                           focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
                               borderSide: const BorderSide(
@@ -151,13 +129,27 @@ class _RegisterPageState extends State<RegisterPage> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: TextField(
+                        controller: passwordController,
+                        obscureText: true,
                         decoration: InputDecoration(
-                          hintText: ' Enter phone number',
+                          hintText: ' Enter Password',
                           hintStyle: const TextStyle(
-                            color: Colors.black,
+                              color: Colors.black, fontWeight: FontWeight.w400),
+                          labelText: 'Enter Password',
+                          prefixIcon: const Icon(Icons.password, color: Colors.green),
+                          suffixIcon: IconButton(
+                            icon: Icon(
+                              passwordVisible
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                              color: Colors.pink,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                passwordVisible = !passwordVisible;
+                              });
+                            },
                           ),
-                          labelText: 'Enter phone number',
-                          prefixIcon: const Icon(Icons.phone, color: Colors.green),
                           focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
                               borderSide: const BorderSide(
@@ -176,17 +168,16 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                       ),
                     ),
+                  
                     const SizedBox(
                       height: 30,
                     ),
                     GestureDetector(
                       onTap: () {
-                        print("...Go to login Screen");
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => const WelcomePage(),
-                          ),
-                        );
+                        AuthController.instance.register(
+                    usernameController.text.trim(),
+                    emailController.text.trim(),
+                    passwordController.text.trim());
                       },
                       child: Container(
                         margin: const EdgeInsets.symmetric(horizontal: 60),

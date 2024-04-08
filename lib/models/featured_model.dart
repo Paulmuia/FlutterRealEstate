@@ -10,7 +10,7 @@ class Featured {
     if (json['rooms'] != null) {
       _rooms = <Rooms>[];
       json['rooms'].forEach((v) {
-        rooms!.add(new Rooms.fromJson(v));
+        rooms.add(new Rooms.fromJson(v));
       });
     }
   }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mm/pages/welcome_page.dart';
+import 'package:mm/auth/auth_Pages/welcome_page.dart';
 import 'package:pinput/pinput.dart';
-
 
 class VerificationScreen extends StatefulWidget {
   const VerificationScreen({super.key});
@@ -142,9 +141,9 @@ class _VerificationScreenState extends State<VerificationScreen> {
                       height: 50,
                       width: double.maxFinite,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(15)),
-                          color: Colors.green,
-                          ),
+                        borderRadius: BorderRadius.all(Radius.circular(15)),
+                        color: Colors.green,
+                      ),
                       child: Center(
                         child: Text(
                           'Verify',
