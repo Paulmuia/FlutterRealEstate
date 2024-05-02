@@ -22,13 +22,13 @@ class FeaturedList extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: (){
-                   Get.to(DetailedHouse(),
+                   Get.to(const DetailedHouse(),
                         arguments: {
                           'image': AppConstants.BASE_URL + plotHouses.plotList[index].image,
                         });
                 },
               child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 10),
+                margin: const EdgeInsets.symmetric(horizontal: 10),
                 width: 210,
                 height: 120,
                 decoration: BoxDecoration(
@@ -42,7 +42,7 @@ class FeaturedList extends StatelessWidget {
               ),
             ),
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
               height: 120,
               width: 210,
               // color: Colors.white,
@@ -51,14 +51,14 @@ class FeaturedList extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                    Text(plotHouses.plotList[index].name,
-                   style: TextStyle(
+                   style: const TextStyle(
                     fontSize: 16, 
                     fontWeight: FontWeight.bold
                   ),),
                    Row(
                     children: [
-                      Icon(Icons.pin_drop_outlined),
-                      Text(plotHouses.plotList[index].location, style: TextStyle(color: const Color.fromRGBO(0, 0, 0, 0.38)),),
+                      const Icon(Icons.pin_drop_outlined),
+                      Text(plotHouses.plotList[index].location, style: const TextStyle(color: Color.fromRGBO(0, 0, 0, 0.38)),),
                     ],
                   ),
                    Row(
@@ -66,20 +66,20 @@ class FeaturedList extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          Icon(Icons.bed,color: Colors.green),
-                         Text("${featuredProducts.featuredList[index].beds}Beds",style: TextStyle(color: Colors.black38),)
+                          const Icon(Icons.bed,color: Colors.green),
+                         Text("${featuredProducts.featuredList[index].beds}Beds",style: const TextStyle(color: Colors.black38),)
                         ],
                       ),
                       Row(
                         children: [
-                          Icon(Icons.bathtub, color: Colors.green,),
-                          Text("${featuredProducts.featuredList[index].bath}Bath",style: TextStyle(color: Colors.black38),),
+                          const Icon(Icons.bathtub, color: Colors.green,),
+                          Text("${featuredProducts.featuredList[index].bath}Bath",style: const TextStyle(color: Colors.black38),),
                         ],
                       ),
                       Row(
                         children: [
-                          Icon(Icons.area_chart_rounded,color: Colors.green),
-                         Text("${featuredProducts.featuredList[index].size}sqft", style: TextStyle(color: Colors.black38),)
+                          const Icon(Icons.area_chart_rounded,color: Colors.green),
+                         Text("${featuredProducts.featuredList[index].size}sqft", style: const TextStyle(color: Colors.black38),)
                         ],
                       )
 
@@ -94,10 +94,10 @@ class FeaturedList extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: Colors.green,
                         borderRadius: BorderRadius.circular(15),
-                        image: DecorationImage(image: AssetImage("lib/assets/paul.png"))
+                        image: const DecorationImage(image: AssetImage("lib/assets/paul.png"))
                       ),
                       ),
-                      Text("    John Adam", style: TextStyle(fontWeight: FontWeight.w700),)
+                      const Text("    Paul Muia", style: TextStyle(fontWeight: FontWeight.w700),)
                     ],
                   )
                 ],

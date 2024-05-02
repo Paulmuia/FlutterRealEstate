@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mm/auth/auth_Pages/welcome_page.dart';
-import 'package:pinput/pinput.dart';
+import 'package:mm/auth/Auth_controllers/auth_controller.dart';
+
 
 class VerificationScreen extends StatefulWidget {
   const VerificationScreen({super.key});
@@ -10,27 +10,13 @@ class VerificationScreen extends StatefulWidget {
 }
 
 class _VerificationScreenState extends State<VerificationScreen> {
-  final pinController = TextEditingController();
-  final focusNode = FocusNode();
-  final formKey = GlobalKey<FormState>();
+  final TextEditingController emailController = TextEditingController();
+  
   @override
   Widget build(BuildContext context) {
-    const focusedBorderColor = Color.fromRGBO(23, 171, 144, 1);
-    const fillColor = Color.fromRGBO(243, 246, 249, 0);
-    const borderColor = Color.fromRGBO(23, 171, 144, 0.4);
+    
 
-    final defaultPinTheme = PinTheme(
-      width: 56,
-      height: 56,
-      textStyle: const TextStyle(
-        fontSize: 22,
-        color: Color.fromRGBO(30, 60, 87, 1),
-      ),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(19),
-        border: Border.all(color: borderColor),
-      ),
-    );
+   
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(children: [
@@ -38,14 +24,14 @@ class _VerificationScreenState extends State<VerificationScreen> {
             Container(
               height: 270,
               width: double.maxFinite,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(40),
                       bottomRight: Radius.circular(40)),
                   color: Colors.green),
-              child: Center(
+              child: const Center(
                   child: Text(
-                'Verify phone number',
+                'Reset password',
                 style: TextStyle(
                     fontSize: 30,
                     color: Colors.white,
@@ -55,98 +41,73 @@ class _VerificationScreenState extends State<VerificationScreen> {
             Container(
               height: 400,
               width: double.maxFinite,
-              margin: EdgeInsets.only(top: 230, left: 10, right: 10),
-              decoration: BoxDecoration(
+              margin: const EdgeInsets.only(top: 230, left: 10, right: 10),
+              decoration: const BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(20)),
                   color: Colors.white),
               child: Column(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 50,
                   ),
-                  Text(
-                    'Enter the four digit code sent to your phone number here',
+                  const Text(
+                    'Enter your email to reset password',
                     style: TextStyle(
                         color: Colors.black,
                         fontSize: 20,
                         fontWeight: FontWeight.w700),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 40,
                   ),
-                  Pinput(
-                    controller: pinController,
-                    focusNode: focusNode,
-                    androidSmsAutofillMethod:
-                        AndroidSmsAutofillMethod.smsUserConsentApi,
-                    listenForMultipleSmsOnAndroid: true,
-                    defaultPinTheme: defaultPinTheme,
-                    separatorBuilder: (index) => const SizedBox(width: 8),
-                    validator: (value) {
-                      return value == '2222' ? null : 'Pin is incorrect';
-                    },
-                    // onClipboardFound: (value) {
-                    //   debugPrint('onClipboardFound: $value');
-                    //   pinController.setText(value);
-                    // },
-                    hapticFeedbackType: HapticFeedbackType.lightImpact,
-                    onCompleted: (pin) {
-                      debugPrint('onCompleted: $pin');
-                    },
-                    onChanged: (value) {
-                      debugPrint('onChanged: $value');
-                    },
-                    cursor: Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.only(bottom: 9),
-                          width: 22,
-                          height: 1,
-                          color: focusedBorderColor,
+              Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: TextField(
+                        controller: emailController,
+                        decoration: InputDecoration(
+                          hintText: ' Enter email',
+                          hintStyle: const TextStyle(
+                            color: Colors.black,
+                          ),
+                          labelText: 'Enter email',
+                          prefixIcon:
+                              const Icon(Icons.email, color: Colors.green),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15),
+                              borderSide: const BorderSide(
+                                width: 1.0,
+                                color: Color.fromARGB(255, 2, 35, 63),
+                              )),
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15),
+                              borderSide: const BorderSide(
+                                width: 1.0,
+                                color: Color.fromARGB(255, 2, 35, 63),
+                              )),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
                         ),
-                      ],
-                    ),
-                    focusedPinTheme: defaultPinTheme.copyWith(
-                      decoration: defaultPinTheme.decoration!.copyWith(
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border.all(color: focusedBorderColor),
                       ),
                     ),
-                    submittedPinTheme: defaultPinTheme.copyWith(
-                      decoration: defaultPinTheme.decoration!.copyWith(
-                        color: fillColor,
-                        borderRadius: BorderRadius.circular(19),
-                        border: Border.all(color: focusedBorderColor),
-                      ),
-                    ),
-                    errorPinTheme: defaultPinTheme.copyBorderWith(
-                      border: Border.all(color: Colors.redAccent),
-                    ),
-                  ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
                   GestureDetector(
                     onTap: () {
-                      print("...Go to login Screen");
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => WelcomePage(),
-                        ),
-                      );
+                      AuthController.instance.resetPassword(emailController.text.trim());
                     },
                     child: Container(
-                      margin: EdgeInsets.symmetric(horizontal: 60),
+                      margin: const EdgeInsets.symmetric(horizontal: 50),
                       height: 50,
                       width: double.maxFinite,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(15)),
                         color: Colors.green,
                       ),
-                      child: Center(
+                      child: const Center(
                         child: Text(
-                          'Verify',
+                          'Reset password',
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 25,

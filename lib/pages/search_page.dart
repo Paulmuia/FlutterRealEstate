@@ -7,9 +7,8 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.amber,
-          title: Text('Search for your favourite house'),
+          title: const Text('Search for your favourite house'),
         ),
-      
         body: SearchScreen(),
       ),
     );
@@ -22,7 +21,14 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
-  final List<String> items = ["Single houses", "Bed sitters", "One bedroom", "Two bedroom", "Three bedroom", "Apartment"];
+  final List<String> items = [
+    "Single houses",
+    "Bed sitters",
+    "One bedroom",
+    "Two bedroom",
+    "Three bedroom",
+    "Apartment"
+  ];
 
   List<String> filteredItems = [];
 
@@ -38,45 +44,39 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Column(
-        children: 
-        <Widget>[
-          SizedBox(height: 30,),
+        children: <Widget>[
+          const SizedBox(
+            height: 30,
+          ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10.0),
                 color: Colors.white,
-                
               ),
               child: TextField(
-                                onChanged: filterItems,
-
-                          decoration: InputDecoration(
-                            hintText: 'Search your favourite house...',
-                            labelText: 'Search ',
-                            
-                            focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(15),
-                                borderSide: BorderSide(
-                                  width: 1.0,
-                                  color: Colors.orange,
-                                )
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(15),
-                                borderSide: BorderSide(
-                                  width: 1.0,
-                                  color: Colors.orange,
-                                )
-                            ),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15),
-
-                            ),
-
-                          ),
-                        ),
+                onChanged: filterItems,
+                decoration: InputDecoration(
+                  hintText: 'Search your favourite house...',
+                  labelText: 'Search ',
+                  focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
+                      borderSide: const BorderSide(
+                        width: 1.0,
+                        color: Colors.orange,
+                      )),
+                  enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
+                      borderSide: const BorderSide(
+                        width: 1.0,
+                        color: Colors.orange,
+                      )),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                ),
+              ),
             ),
           ),
           Expanded(

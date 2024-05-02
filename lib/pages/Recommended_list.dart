@@ -10,102 +10,124 @@ class RecommendeList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<PlotController>(builder: (plotProducts){
-      return GetBuilder<FeaturedController>(builder: (featuredHouses){
+    return GetBuilder<PlotController>(builder: (plotProducts) {
+      return GetBuilder<FeaturedController>(builder: (featuredHouses) {
         return Container(
-      child: ListView.builder(
-        itemCount: plotProducts.plotList.length,
-        scrollDirection: Axis.horizontal,
-        itemBuilder:
-       (itemBuilder, index){
-        return Column(
-          children: [
-            GestureDetector(
-              onTap: (){
-                        Get.to(DetailedHouse(),
-                        arguments: {
-                          'image': AppConstants.BASE_URL + plotProducts.plotList[index].image,
+          child: ListView.builder(
+              itemCount: plotProducts.plotList.length,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (itemBuilder, index) {
+                return Column(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Get.to(const DetailedHouse(), arguments: {
+                          'image': AppConstants.BASE_URL +
+                              plotProducts.plotList[index].image,
                         });
-                       },
-              child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10),
-                width: 210,
-                height: 120,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  image:  DecorationImage(image: NetworkImage(AppConstants.BASE_URL+plotProducts.plotList[index].image),
-                  fit: BoxFit.cover
-                  ),
-                ), 
-                
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-              height: 120,
-              width: 210,
-              // color: Colors.white,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                   Text(plotProducts.plotList[index].name, style: const TextStyle(
-                    fontSize: 16, 
-                    fontWeight: FontWeight.bold
-                  ),),
-                   Row(
-                    children: [
-                      const Icon(Icons.pin_drop_outlined),
-                      Text(plotProducts.plotList[index].location, style: const TextStyle(color: Colors.black38),),
-                    ],
-                  ),
-                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
+                      },
+                      child: Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 10),
+                        width: 210,
+                        height: 120,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          image: DecorationImage(
+                              image: NetworkImage(AppConstants.BASE_URL +
+                                  plotProducts.plotList[index].image),
+                              fit: BoxFit.cover),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 5, vertical: 10),
+                      height: 120,
+                      width: 210,
+                      
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Icon(Icons.bed,color: Colors.green),
-                          Text("${featuredHouses.featuredList[index].beds}Beds",style: const TextStyle(color: Colors.black38),)
+                          Text(
+                            plotProducts.plotList[index].name,
+                            style: const TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold),
+                          ),
+                          Row(
+                            children: [
+                              const Icon(Icons.pin_drop_outlined),
+                              Text(
+                                plotProducts.plotList[index].location,
+                                style: const TextStyle(color: Colors.black38),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  const Icon(Icons.bed, color: Colors.green),
+                                  Text(
+                                    "${featuredHouses.featuredList[index].beds}Beds",
+                                    style:
+                                        const TextStyle(color: Colors.black38),
+                                  )
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  const Icon(
+                                    Icons.bathtub,
+                                    color: Colors.green,
+                                  ),
+                                  Text(
+                                    "${featuredHouses.featuredList[index].bath}Bath",
+                                    style:
+                                        const TextStyle(color: Colors.black38),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  const Icon(Icons.area_chart_rounded,
+                                      color: Colors.green),
+                                  Text(
+                                    "${featuredHouses.featuredList[index].size}sqft",
+                                    style:
+                                        const TextStyle(color: Colors.black38),
+                                  )
+                                ],
+                              )
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Container(
+                                height: 25,
+                                width: 25,
+                                decoration: BoxDecoration(
+                                    color: Colors.green,
+                                    borderRadius: BorderRadius.circular(15),
+                                    image: const DecorationImage(
+                                        image:
+                                            AssetImage("lib/assets/paul.png"))),
+                              ),
+                              const Text(
+                                "    Paul Muia",
+                                style: TextStyle(fontWeight: FontWeight.w700),
+                              )
+                            ],
+                          )
                         ],
                       ),
-                      Row(
-                        children: [
-                          const Icon(Icons.bathtub, color: Colors.green,),
-                          Text("${featuredHouses.featuredList[index].bath}Bath",style: const TextStyle(color: Colors.black38),),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          const Icon(Icons.area_chart_rounded,color: Colors.green),
-                          Text("${featuredHouses.featuredList[index].size}sqft", style: const TextStyle(color: Colors.black38),)
-                        ],
-                      )
-
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Container(
-                        
-                        height: 25,
-                      width: 25,
-                      decoration: BoxDecoration(
-                        color: Colors.green,
-                        borderRadius: BorderRadius.circular(15),
-                        image: const DecorationImage(image: AssetImage("lib/assets/paul.png"))
-                      ),
-                      ),
-                      const Text("    John Adam", style: TextStyle(fontWeight: FontWeight.w700),)
-                    ],
-                  )
-                ],
-              ),
-            )
-          ],
+                    )
+                  ],
+                );
+              }),
         );
-      }),
-    );
       });
     });
   }

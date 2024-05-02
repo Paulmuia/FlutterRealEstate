@@ -142,7 +142,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               passwordVisible
                                   ? Icons.visibility
                                   : Icons.visibility_off,
-                              color: Colors.pink,
+                              color: Colors.green,
                             ),
                             onPressed: () {
                               setState(() {
