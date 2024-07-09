@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
       return GetMaterialApp(
         builder: EasyLoading.init(),
         debugShowCheckedModeBanner: false,
-        home: const FilteredHouses(),
+        home: const FiteredHouses(),
         initialRoute: RouteHelper.initial,
         getPages: RouteHelper.routes,
       );

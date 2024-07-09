@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:mm/controllers/featured_controller.dart';
 import 'package:mm/controllers/plot_controller.dart';
@@ -32,31 +31,31 @@ class _HouseContentsState extends State<HouseContents> {
                 const SizedBox(
                   height: 10,
                 ),
-                 Row(
+                Row(
                   children: [
                     GestureDetector(
-                      onTap: (){
-                        Get.back();
-                      },
-                      child: Icon(Icons.close_outlined)),
-                    SizedBox(
+                        onTap: () {
+                          Get.back();
+                        },
+                        child: const Icon(Icons.close_outlined)),
+                    const SizedBox(
                       width: 120,
                     ),
-                    Text(
+                    const Text(
                       'Details',
                       style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w700,
                           color: Colors.black),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 100,
                     ),
-                    Icon(Icons.favorite_border_outlined),
-                    SizedBox(
+                    const Icon(Icons.favorite_border_outlined),
+                    const SizedBox(
                       width: 10,
                     ),
-                    Icon(Icons.ios_share_rounded)
+                    const Icon(Icons.ios_share_rounded)
                   ],
                 ),
                 const SizedBox(
