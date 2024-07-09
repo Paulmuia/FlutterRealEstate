@@ -6,15 +6,21 @@ import 'package:mm/pages/Recommended_list.dart';
 import 'package:mm/pages/featured_list.dart';
 import 'package:mm/pages/house_page.dart';
 
+// ignore: must_be_immutable
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  final String username;
+  
+const HomePage({Key? key, required this.username}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+   
   PageController pageController = PageController(viewportFraction: 0.8);
+  
+  
   @override
   Widget build(BuildContext context) {
     Get.find<FeaturedController>();
@@ -47,14 +53,14 @@ class _HomePageState extends State<HomePage> {
               ),
               Column(
                 children: [
-                  const Row(
+                    Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(left: 20),
+                        padding: const EdgeInsets.only(left: 20),
                         child: Text(
-                          'Hi, There!',
-                          style: TextStyle(
+                          "Hi, There ${widget.username} ",
+                          style: const TextStyle(
                               color: Colors.black,
                               fontSize: 20,
                               fontWeight: FontWeight.bold),

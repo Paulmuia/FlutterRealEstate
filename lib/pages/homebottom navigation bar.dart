@@ -15,7 +15,7 @@ class HomeBottomNavigationBar extends StatefulWidget {
 class _HomeBottomNavigationBarState extends State<HomeBottomNavigationBar> {
   int _selectedIndex = 0;
   List pages = [
-    const HomePage(),
+     const HomePage(username: '',),
     SearchScreen(),
     const HousePage(),
     const AccountPage()

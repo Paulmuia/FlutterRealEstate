@@ -5,17 +5,21 @@ class RouteHelper {
   static const String initial = "/";
   static const String homeRoute = "/home-route";
 
-
   static String getInitial() => initial;
   static String getHomeRoute() => homeRoute;
 
   static List<GetPage> routes = [
-    GetPage(name: initial, page: (() => const HomePage())),
-   
-         GetPage(
+    GetPage(
+        name: initial,
+        page: (() => const HomePage(
+              username: '',
+            ))),
+    GetPage(
         name: homeRoute,
         page: () {
-          return const HomePage();
+          return const HomePage(
+            username: '',
+          );
         },
         transition: Transition.fadeIn),
   ];

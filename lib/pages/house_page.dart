@@ -150,9 +150,9 @@ class _HousePageState extends State<HousePage> {
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
                                           children: [
-                                            const Text(
-                                              "Kirimi, CA, NY",
-                                              style: TextStyle(
+                                            Text(
+                                              plotProducts.plotList[index].name,
+                                              style: const TextStyle(
                                                   fontSize: 16,
                                                   fontWeight: FontWeight.bold),
                                             ),
@@ -178,51 +178,53 @@ class _HousePageState extends State<HousePage> {
                                             )
                                           ],
                                         ),
-                                        const Row(
+                                        Row(
                                           children: [
-                                            Icon(Icons.pin_drop_outlined),
+                                            const Icon(Icons.pin_drop_outlined),
                                             Text(
-                                              "Meru,  Nchiru",
-                                              style: TextStyle(
+                                              plotProducts
+                                                  .plotList[index].location,
+                                              style: const TextStyle(
                                                   color: Colors.black38),
                                             ),
                                           ],
                                         ),
-                                        const Row(
+                                        Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
                                           children: [
                                             Row(
                                               children: [
-                                                Icon(Icons.bed,
+                                                const Icon(Icons.bed,
                                                     color: Colors.green),
                                                 Text(
-                                                  "4 Beds",
-                                                  style: TextStyle(
+                                                  "${featuredPlots.featuredList[index].beds.toString()} Beds",
+                                                  style: const TextStyle(
                                                       color: Colors.black38),
                                                 )
                                               ],
                                             ),
                                             Row(
                                               children: [
-                                                Icon(
+                                                const Icon(
                                                   Icons.bathtub,
                                                   color: Colors.green,
                                                 ),
                                                 Text(
-                                                  "BathRooms",
-                                                  style: TextStyle(
+                                                  "${featuredPlots.featuredList[index].bath.toString()} Bathroom(s)",
+                                                  style: const TextStyle(
                                                       color: Colors.black38),
                                                 ),
                                               ],
                                             ),
                                             Row(
                                               children: [
-                                                Icon(Icons.area_chart_rounded,
+                                                const Icon(
+                                                    Icons.area_chart_rounded,
                                                     color: Colors.green),
                                                 Text(
-                                                  "12 sqft",
-                                                  style: TextStyle(
+                                                  "${featuredPlots.featuredList[index].size.toString()} sqft",
+                                                  style: const TextStyle(
                                                       color: Colors.black38),
                                                 )
                                               ],
@@ -243,7 +245,7 @@ class _HousePageState extends State<HousePage> {
                                                           "lib/assets/paul.png"))),
                                             ),
                                             const Text(
-                                              "    John Adam",
+                                              "    Paul Muia",
                                               style: TextStyle(
                                                   fontWeight: FontWeight.w700),
                                             )
