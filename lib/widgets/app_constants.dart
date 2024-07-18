@@ -6,3 +6,4 @@ class AppConstants {
   static const String FEATURED_URI = "featured";
   static const String PLOT_URI = "plots";
 }
+

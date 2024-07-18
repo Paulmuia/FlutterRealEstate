@@ -3,10 +3,11 @@ import 'package:get/get.dart';
 import 'package:mm/controllers/featured_controller.dart';
 import 'package:mm/controllers/plot_controller.dart';
 
-class DetailedHouse extends StatefulWidget {
+class DetailedHouse extends StatelessWidget {
   const DetailedHouse({super.key});
 
   @override
+
   State<DetailedHouse> createState() => _DetailedHouseState();
 }
 
@@ -26,6 +27,7 @@ class _DetailedHouseState extends State<DetailedHouse> {
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Column(
+
               children: [
                 const SizedBox(
                   height: 10,
@@ -103,6 +105,7 @@ class _DetailedHouseState extends State<DetailedHouse> {
                   height: 20,
                 ),
                 Container(
+
                   height: 90,
                   width: double.maxFinite,
                   //color: Colors.orange,
@@ -429,6 +432,7 @@ class _DetailedHouseState extends State<DetailedHouse> {
             ),
           ),
         ),
+
       ),
     );
   }

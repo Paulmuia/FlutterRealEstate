@@ -1,21 +1,19 @@
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mm/controllers/plot_controller.dart';
 import 'package:mm/pages/house_contents.dart';
 import 'package:mm/widgets/app_constants.dart';
 
-import '../controllers/featured_controller.dart';
 
-class HousePage extends StatefulWidget {
+import 'package:flutter/material.dart';
+
+class HousePage extends StatelessWidget {
   const HousePage({super.key});
 
   @override
-  State<HousePage> createState() => _HousePageState();
-}
-
-class _HousePageState extends State<HousePage> {
-  @override
   Widget build(BuildContext context) {
+
     Get.find<FeaturedController>();
     return Scaffold(
       backgroundColor: Colors.white,
@@ -253,6 +251,7 @@ class _HousePageState extends State<HousePage> {
             }))
           ],
         ),
+
       ),
     );
   }

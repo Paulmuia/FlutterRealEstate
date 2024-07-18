@@ -69,4 +69,6 @@ class Rooms {
     agent = json['agent'];
   }
 
+
 }
+

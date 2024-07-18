@@ -17,6 +17,8 @@ Future<void> init() async{
 
   Get.lazyPut(() => FeaturedController(featuredRepo: Get.find()));
 
+
   
   Get.lazyPut(() => PlotController(plotRepo: Get.find()));
+
 }
