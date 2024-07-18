@@ -18,32 +18,32 @@ class _HousePageState extends State<HousePage> {
   Widget build(BuildContext context) {
     Get.find<FeaturedController>();
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Column(
           children: [
-            const SizedBox(
-              height: 20,
-            ),
-            Row(
-              children: [
-                const SizedBox(
-                  width: 10,
-                ),
-                GestureDetector(
-                    onTap: () {
-                      Get.back();
-                    },
-                    child: const Icon(Icons.arrow_back_ios)),
-                GestureDetector(
-                    onTap: () {
-                      Get.back();
-                    },
-                    child: const Text('Back')),
-                const SizedBox(
-                  width: 280,
-                ),
-                const Icon(Icons.menu)
-              ],
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      GestureDetector(
+                          onTap: () {
+                            Get.back();
+                          },
+                          child: const Icon(Icons.arrow_back_ios)),
+                      GestureDetector(
+                          onTap: () {
+                            Get.back();
+                          },
+                          child: const Text('Back')),
+                    ],
+                  ),
+                  const Icon(Icons.menu)
+                ],
+              ),
             ),
             const Center(
               child: Text(
@@ -57,7 +57,7 @@ class _HousePageState extends State<HousePage> {
             Expanded(child: GetBuilder<PlotController>(builder: (plotProducts) {
               return GetBuilder<FeaturedController>(builder: (featuredPlots) {
                 return Container(
-                  //color: Colors.green,
+                  color: Colors.white,
                   child: ListView.builder(
                       itemCount: plotProducts.plotList.length,
                       itemBuilder: (context, index) {
@@ -89,11 +89,8 @@ class _HousePageState extends State<HousePage> {
                                           });
                                         },
                                         child: Container(
-                                          margin: const EdgeInsets.only(
-                                            left: 15,
-                                            right: 15,
-                                            top: 15,
-                                          ),
+                                          margin: const EdgeInsets.symmetric(
+                                              horizontal: 15, vertical: 8),
                                           height: 180,
                                           decoration: BoxDecoration(
                                               borderRadius:
@@ -110,41 +107,36 @@ class _HousePageState extends State<HousePage> {
                                               )),
                                         ),
                                       ),
-                                      Container(
-                                        margin: const EdgeInsets.only(
-                                            top: 30, left: 30),
-                                        height: 30,
-                                        width: 30,
-                                        decoration: const BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            color: Colors.white),
-                                        child: const Center(
+                                      const Positioned(
+                                        top: 20,
+                                        left: 30,
+                                        child: CircleAvatar(
+                                            backgroundColor: Colors.white,
+                                            radius: 18,
                                             child: Icon(Icons.share)),
                                       ),
-                                      Container(
-                                        margin: const EdgeInsets.only(
-                                            top: 30, left: 330),
-                                        height: 30,
-                                        width: 30,
-                                        decoration: const BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            color: Colors.white),
-                                        child: const Icon(
-                                            Icons.favorite_border_outlined),
-                                      )
+                                      const Positioned(
+                                        top: 20,
+                                        right: 30,
+                                        child: CircleAvatar(
+                                            backgroundColor: Colors.white,
+                                            radius: 18,
+                                            child:
+                                                Icon(Icons.favorite_outline)),
+                                      ),
                                     ],
                                   ),
                                   Container(
+                                    margin:
+                                        EdgeInsets.symmetric(horizontal: 10),
                                     padding: const EdgeInsets.symmetric(
-                                        horizontal: 5, vertical: 10),
+                                        horizontal: 10, vertical: 5),
                                     height: 120,
-                                    width: 350,
+                                    width: double.maxFinite,
                                     //color: Colors.orange,
                                     child: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         Row(
                                           mainAxisAlignment:
@@ -156,26 +148,24 @@ class _HousePageState extends State<HousePage> {
                                                   fontSize: 16,
                                                   fontWeight: FontWeight.bold),
                                             ),
-                                            Container(
-                                              height: 25,
-                                              width: 50,
-                                              color: Colors.white,
-                                              child: const Row(
-                                                children: [
-                                                  Icon(
-                                                    Icons.star,
-                                                    color: Colors.orange,
-                                                  ),
-                                                  Text(
-                                                    '4.5',
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.w700,
-                                                        fontSize: 16),
-                                                  )
-                                                ],
-                                              ),
-                                            )
+                                            const Row(
+                                              children: [
+                                                Icon(
+                                                  Icons.star,
+                                                  color: Colors.orange,
+                                                ),
+                                                SizedBox(
+                                                  width: 10,
+                                                ),
+                                                Text(
+                                                  '4.5',
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      fontSize: 16),
+                                                )
+                                              ],
+                                            ),
                                           ],
                                         ),
                                         Row(
