@@ -12,6 +12,7 @@ class _FiteredHousesState extends State<FiteredHouses> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: const Text('Fitered Houses',style: TextStyle(fontSize: 20,color: Colors.white,fontWeight: FontWeight.w600,fontStyle: FontStyle.italic),),
         leading:const CircleAvatar(
           backgroundColor: Colors.white,
@@ -35,20 +36,29 @@ class _FiteredHousesState extends State<FiteredHouses> {
               decoration: BoxDecoration(
                 borderRadius:const  BorderRadius.all(Radius.circular(10)),
                 border: Border.all(width: 1,color: Colors.green),
-                image:const  DecorationImage(image: AssetImage('lib/assets/goo.png'),fit: BoxFit.cover)
+                image:const  DecorationImage(image: AssetImage('lib/assets/house.png'),fit: BoxFit.cover)
               ),
             ),
             const SizedBox(height: 20,),
-            SizedBox(
-              height: 100,
-              child: ListView.builder(itemBuilder: (context,index){
-                return Container(
-                  height: 100,
-                  width: double.maxFinite,
-                  margin:const  EdgeInsets.symmetric(horizontal: 10,vertical: 10),
-                  padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
-                );
-              }),
+            Expanded(
+              child: SizedBox(
+                
+                child: ListView.builder(
+                  itemCount: 10,
+                  itemBuilder: (context,index){
+                  return Container(
+                    height: 200,
+                    width: double.maxFinite,
+                    
+                    margin:const  EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+                    padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+                    decoration: BoxDecoration(
+                      borderRadius:const  BorderRadius.all(Radius.circular(20)),
+                      border: Border.all(width: 2,color: Colors.green)
+                    ),
+                  );
+                }),
+              ),
             )
           ],
         ),
