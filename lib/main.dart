@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:mm/auth/Auth_controllers/auth_controller.dart';
+import 'package:mm/auth/auth_Pages/welcome_page.dart';
 import 'package:mm/controllers/featured_controller.dart';
 import 'package:mm/controllers/plot_controller.dart';
 import 'package:mm/pages/filtered_houses.dart';
+import 'package:mm/pages/splash_screen.dart';
 import 'package:mm/widgets/route_helper.dart';
 import 'helper/dependancies.dart' as dep;
 
@@ -33,7 +35,7 @@ class MyApp extends StatelessWidget {
       return GetMaterialApp(
         builder: EasyLoading.init(),
         debugShowCheckedModeBanner: false,
-        home: const FiteredHouses(),
+        home: const WelcomePage(),
         initialRoute: RouteHelper.initial,
         getPages: RouteHelper.routes,
       );
