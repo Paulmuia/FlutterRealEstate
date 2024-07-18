@@ -7,37 +7,37 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:mm/auth/auth_Pages/welcome_page.dart';
 import 'package:mm/pages/home_page.dart';
-//import 'package:mm/pages/splash_screen.dart';
-//import 'package:mm/widgets/route_helper.dart';
+import 'package:mm/pages/splash_screen.dart';
+import 'package:mm/widgets/route_helper.dart';
 
 class AuthController extends GetxController {
   static AuthController instance = Get.find();
- // late Rx<User?> _user;
+ late Rx<User?> _user;
   FirebaseAuth auth = FirebaseAuth.instance;
 
-  // @override
-  // void onReady() {
-  //   super.onReady();
-  //   _user = Rx<User?>(auth.currentUser);
-  //   _user.bindStream(auth.userChanges());
-  //   ever(_user, _initialScreen);
-  // }
+  @override
+  void onReady() {
+    super.onReady();
+    _user = Rx<User?>(auth.currentUser);
+    _user.bindStream(auth.userChanges());
+    ever(_user, _initialScreen);
+  }
 
-  // _initialScreen(User? user) {
-  //   if (user == null) {
-  //     print('splash screen');
-  //     Get.off(() => const SplashScreen(), transition: Transition.fadeIn);
-  //     Timer(
-  //         const Duration(seconds: 5), () => Get.off(() => const WelcomePage()));
-  //   } else {
-  //     print('home page');
-  //     if (Get.currentRoute != RouteHelper.getHomeRoute()) {
-  //       String? username = user.displayName; // Get the username
-  //       Get.offAll(() =>
-  //           HomePage(username: username!)); // Pass the username to HomePage
-  //     }
-  //   }
-  // }
+  _initialScreen(User? user) {
+    if (user == null) {
+      print('splash screen');
+      Get.off(() => const SplashScreen(), transition: Transition.fadeIn);
+      Timer(
+          const Duration(seconds: 5), () => Get.off(() => const WelcomePage()));
+    } else {
+      print('home page');
+      if (Get.currentRoute != RouteHelper.getHomeRoute()) {
+        String? username = user.displayName; // Get the username
+        Get.offAll(() =>
+            HomePage(username: username!)); // Pass the username to HomePage
+      }
+    }
+  }
 
   void register(String username, String email, String password) async {
     if (username.isEmpty) {
