@@ -6,11 +6,12 @@ class ApiClient extends GetConnect implements GetxService{
   late String token;
   final String appBaseUrl;
 
+  // ignore: unused_field
   late Map<String, String> _mainHeaders;
 
   ApiClient({required this.appBaseUrl}){
     baseUrl=appBaseUrl;
-    timeout = Duration(seconds: 30);
+    timeout =const  Duration(seconds: 30);
     token = AppConstants.TOKEN;
     _mainHeaders ={
       'Content-type':'application/json; charset=UTF-8',

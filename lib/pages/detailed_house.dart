@@ -1,190 +1,438 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:mm/controllers/featured_controller.dart';
+import 'package:mm/controllers/plot_controller.dart';
 
 class DetailedHouse extends StatelessWidget {
   const DetailedHouse({super.key});
 
   @override
+
+  State<DetailedHouse> createState() => _DetailedHouseState();
+}
+
+class _DetailedHouseState extends State<DetailedHouse> {
+  PlotController plotController = Get.find();
+  FeaturedController featuredController = Get.find();
+  @override
   Widget build(BuildContext context) {
+    final arguments = Get.arguments as Map<String, dynamic>?;
+
+    final String imageUrl = arguments?['image'] ?? '';
+
     return Scaffold(
-      body: Column(
-        children: [
-          Container(
-            height: 40,
-            margin: EdgeInsets.only(top: 40),
-            padding: EdgeInsets.symmetric(horizontal: 15),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Column(
+
               children: [
-                Row(
-                  children: [
-                    Icon(
-                      Icons.arrow_back_ios,
-                      color: Colors.grey[600],
-                    ),
-                    Text(
-                      "Back",
-                      style: TextStyle(color: Colors.grey[600]),
-                    )
-                  ],
-                ),
-                Text(
-                  "Details",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                const SizedBox(
+                  height: 10,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Icon(
-                      Icons.favorite_outline,
-                      size: 22,
+                    GestureDetector(
+                        onTap: () {
+                          Get.back();
+                        },
+                        child: const Icon(Icons.arrow_back_ios)),
+                    GestureDetector(
+                        onTap: () {
+                          Get.back();
+                        },
+                        child: const Text('Back')),
+                    const SizedBox(
+                      width: 80,
                     ),
-                    SizedBox(
+                    const Text(
+                      'Details',
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.black),
+                    ),
+                    const SizedBox(
+                      width: 100,
+                    ),
+                    const Icon(Icons.favorite_border_outlined),
+                    const SizedBox(
                       width: 10,
                     ),
-                    Icon(
-                      Icons.ios_share_outlined,
-                      size: 20,
+                    const Icon(Icons.ios_share_rounded)
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Stack(
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 10),
+                      height: 200,
+                      width: double.maxFinite,
+                      decoration: BoxDecoration(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10)),
+                          color: Colors.blue,
+                          image: DecorationImage(
+                              image: NetworkImage(imageUrl),
+                              fit: BoxFit.cover)),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(top: 160, left: 280),
+                      height: 30,
+                      width: 60,
+                      decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                          color: Colors.white),
+                      child: const Row(children: [
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Icon(Icons.home),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Text('24')
+                      ]),
                     )
                   ],
-                )
-              ],
-            ),
-          ),
-
-          // lower body
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-            height: 210,
-            width: double.maxFinite,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Colors.blue,
-                image: DecorationImage(
-                    image: AssetImage("lib/assets/house2.png"),
-                    fit: BoxFit.cover)),
-            child: Stack(
-              alignment: Alignment.bottomRight,
-              children: [
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
                 Container(
-                  margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                  height: 30,
-                  width: 70,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    color: Colors.white,
-                  ),
+
+                  height: 90,
+                  width: double.maxFinite,
+                  //color: Colors.orange,
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [Icon(Icons.image_rounded), Text("24")],
-                  ),
-                )
-              ],
-            ),
-          ),
-
-          // call, massage row
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  padding: EdgeInsets.symmetric(vertical: 20),
-                  height: 90,
-                  width: 80,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 2,
-                          blurRadius: 7,
-                          offset: Offset(0, 3), // changes position of shadow
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Container(
+                          height: 100,
+                          width: 80,
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey,
+                                offset: Offset(0, 3),
+                                blurRadius: 6,
+                                spreadRadius: 0,
+                              ),
+                            ],
+                          ),
+                          child: const Column(children: [
+                            SizedBox(
+                              height: 15,
+                            ),
+                            Icon(
+                              Icons.call,
+                              size: 30,
+                              color: Color.fromRGBO(76, 175, 80, 1),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              'Call',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w400),
+                            )
+                          ]),
                         ),
+                        Container(
+                          height: 100,
+                          width: 80,
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey, // Color of the shadow
+                                offset:
+                                    Offset(0, 3), // Offset of the shadow (x, y)
+                                blurRadius: 6, // Amount of blur
+                                spreadRadius: 0, // Amount of spread
+                              ),
+                            ],
+                          ),
+                          child: const Column(children: [
+                            SizedBox(
+                              height: 15,
+                            ),
+                            Icon(
+                              Icons.message,
+                              size: 30,
+                              color: Colors.green,
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              'Message',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w400),
+                            )
+                          ]),
+                        ),
+                        Container(
+                          height: 100,
+                          width: 80,
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey, // Color of the shadow
+                                offset:
+                                    Offset(0, 3), // Offset of the shadow (x, y)
+                                blurRadius: 6, // Amount of blur
+                                spreadRadius: 0, // Amount of spread
+                              ),
+                            ],
+                          ),
+                          child: const Column(children: [
+                            SizedBox(
+                              height: 15,
+                            ),
+                            Icon(
+                              Icons.directions_outlined,
+                              size: 30,
+                              color: Colors.green,
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              'Direction',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w400),
+                            )
+                          ]),
+                        ),
+                        Container(
+                          height: 100,
+                          width: 80,
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey, // Color of the shadow
+                                offset:
+                                    Offset(0, 3), // Offset of the shadow (x, y)
+                                blurRadius: 6, // Amount of blur
+                                spreadRadius: 0, // Amount of spread
+                              ),
+                            ],
+                          ),
+                          child: const Column(children: [
+                            SizedBox(
+                              height: 15,
+                            ),
+                            Icon(
+                              Icons.share_location_outlined,
+                              size: 30,
+                              color: Colors.green,
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              'Share',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w400),
+                            )
+                          ]),
+                        )
                       ]),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [Icon(Icons.call), Text("Call")],
-                  ),
+                ),
+                const SizedBox(
+                  height: 20,
                 ),
                 Container(
-                  padding: EdgeInsets.symmetric(vertical: 20),
-                  height: 90,
-                  width: 80,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 2,
-                          blurRadius: 7,
-                          offset: Offset(0, 3), // changes position of shadow
+                  height: 40,
+                  width: double.maxFinite,
+                  //color: Colors.orange,
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Container(
+                          height: 40,
+                          width: 120,
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey, // Color of the shadow
+                                offset:
+                                    Offset(0, 3), // Offset of the shadow (x, y)
+                                blurRadius: 6, // Amount of blur
+                                spreadRadius: 0, // Amount of spread
+                              ),
+                            ],
+                          ),
+                          child: const Center(
+                            child: Text(
+                              'Overview',
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 20),
+                            ),
+                          ),
                         ),
+                        Container(
+                          height: 40,
+                          width: 120,
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey, // Color of the shadow
+                                offset:
+                                    Offset(0, 3), // Offset of the shadow (x, y)
+                                blurRadius: 6, // Amount of blur
+                                spreadRadius: 0, // Amount of spread
+                              ),
+                            ],
+                          ),
+                          child: const Center(
+                            child: Text(
+                              'Features',
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 20),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: 40,
+                          width: 120,
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey,
+                                offset: Offset(0, 3),
+                                blurRadius: 6,
+                                spreadRadius: 0,
+                              ),
+                            ],
+                          ),
+                          child: const Center(
+                            child: Text(
+                              'House Value',
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 20),
+                            ),
+                          ),
+                        )
                       ]),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [Icon(Icons.message_rounded), Text("Message")],
-                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                const Text(
+                  'And now that you’ve spent time writing compelling listings, how do you get more eyeballs on thess grm? We help you sell your clients’ homes faster and close more deals by integrating IDX listings into your website. It’s called Listings Pro, and it.',
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w400),
                 ),
                 Container(
-                  padding: EdgeInsets.symmetric(vertical: 20),
-                  height: 90,
-                  width: 80,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 2,
-                          blurRadius: 7,
-                          offset: Offset(0, 3), // changes position of shadow
-                        ),
-                      ]),
-                      
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [Icon(Icons.directions_walk), Text("Directions")],
-                  ),
+                  height: 30,
+                  width: double.maxFinite,
+                  //color: Colors.red,
+                  child: Row(children: [
+                    const Icon(
+                      Icons.star_outlined,
+                      color: Colors.orange,
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    const Text(
+                      '49.2 K Reviews',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600),
+                    ),
+                    const SizedBox(
+                      width: 90,
+                    ),
+                    Container(
+                      height: 30,
+                      width: 120,
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey, // Color of the shadow
+                            offset: Offset(0, 3), // Offset of the shadow (x, y)
+                            blurRadius: 6, // Amount of blur
+                            spreadRadius: 0, // Amount of spread
+                          ),
+                        ],
+                      ),
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Text(
+                            'Top Rated',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500),
+                          ),
+                          Icon(Icons.keyboard_arrow_down_outlined)
+                        ],
+                      ),
+                    )
+                  ]),
+                ),
+                const SizedBox(
+                  height: 15,
                 ),
                 Container(
-                  padding: EdgeInsets.symmetric(vertical: 20),
-                  height: 90,
-                  width: 80,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 2,
-                          blurRadius: 7,
-                          offset: Offset(0, 3), // changes position of shadow
-                        ),
-                      ]),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [Icon(Icons.rotate_90_degrees_ccw), Text("Share")
+                  padding: const EdgeInsets.all(5),
+                  height: 300,
+                  width: double.maxFinite,
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey, // Color of the shadow
+                        offset: Offset(0, 3), // Offset of the shadow (x, y)
+                        blurRadius: 6, // Amount of blur
+                        spreadRadius: 0, // Amount of spread
+                      ),
                     ],
                   ),
-                ),
+                  child: const Text(
+                    'And now that you’ve spent time writing compelling listings, how do you get more eyeballs on them? We help you sell your clients homes faster and close more deals by integrating IDX listings into your website. Its called Listings Pro, and its now available for both existing and new OutboundEngine customers. For current customers, click here to set up a call with your Account Manager to add Listings Pro to your website. If youre new to OutboundEngine, schedule a free demo today to see how we can help youow that you’ve spent time writing compelling listings, how do you get more eyeballs on them? We help you sell your clients homes faster and close more deals by integrating IDX listings into your website. Its called Listings Pro, and its now available for both existing and new OutboundEngine customers. For current customers, click here to set up a call with your Account Manager to add Listings Pro to your website. If youre new to OutboundEngine, schedule a free demo today to see how we can help your real estate business grr real estate business grow',
+                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                  ),
+                )
               ],
             ),
           ),
+        ),
 
-
-          // overview, features row
-          Container(
-            child: Row(
-              children: [
-                
-              ],
-            ),
-          )
-        ],
       ),
     );
   }

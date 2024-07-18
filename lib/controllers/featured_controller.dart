@@ -6,22 +6,23 @@ class FeaturedController extends GetxController{
   final FeaturedRepo featuredRepo;
 
   FeaturedController({required this.featuredRepo});
-  List<dynamic> _fraturedList = [];
-  List<dynamic> get featuredList => _fraturedList;
+  List<dynamic> _featuredList = [];
+  List<dynamic> get featuredList => _featuredList;
 
   bool _isLoaded =false;
   bool get isLoaded => _isLoaded;
 
-  int _quantity = 0;
+    // ignore: unused_field
+    int _quantity = 0;
 
   Future<void> getFeaturedList() async {
     Response response = await featuredRepo.getFeaturedList();
     if (response.statusCode ==200) {
       print("kidogo tu");
       // print("This is response ${response.body}");
-      _fraturedList =[];
-      _fraturedList.addAll(Featured.fromJson(response.body).rooms);
-      print(_fraturedList);
+      _featuredList =[];
+     _featuredList.addAll(Featured.fromJson(response.body).rooms);
+      print(_featuredList);
       _isLoaded = true;
       update();
     }else {

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mm/controllers/featured_controller.dart';
+import 'package:mm/controllers/plot_controller.dart';
+import 'package:mm/pages/detailed_house.dart';
 import 'package:mm/widgets/app_constants.dart';
 
 class FeaturedList extends StatelessWidget {
@@ -9,65 +11,75 @@ class FeaturedList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: GetBuilder<FeaturedController>(builder: (featuredHouses){
-        return ListView.builder(
-        itemCount: featuredHouses.featuredList.length,
+      child: GetBuilder<PlotController>(builder: (plotHouses){
+      return GetBuilder<FeaturedController>(builder: (featuredProducts){
+          return ListView.builder(
+        itemCount: plotHouses.plotList.length,
         scrollDirection: Axis.horizontal,
         itemBuilder:
        (itemBuilder, index){
         return Column(
           children: [
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 10),
-              width: 200,
-              height: 120,
-              decoration: BoxDecoration(
-                color: Colors.blue,
-                borderRadius: BorderRadius.circular(10),
-                image: DecorationImage(image: NetworkImage(AppConstants.BASE_URL+featuredHouses.featuredList[index].plotImage),
-                fit: BoxFit.cover
-                ),
-              ), 
-              
+            GestureDetector(
+              onTap: (){
+                   Get.to(const DetailedHouse(),
+                        arguments: {
+                          'image': AppConstants.BASE_URL + plotHouses.plotList[index].image,
+                        });
+                },
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 10),
+                width: 210,
+                height: 120,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                  image: DecorationImage(image: NetworkImage(AppConstants.BASE_URL+plotHouses.plotList[index].image),
+                  fit: BoxFit.cover
+                  ),
+                ), 
+                
+              ),
             ),
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
               height: 120,
-              width: 200,
+              width: 210,
               // color: Colors.white,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text("Kirimi, CA, NY", style: TextStyle(
+                   Text(plotHouses.plotList[index].name,
+                   style: const TextStyle(
                     fontSize: 16, 
                     fontWeight: FontWeight.bold
                   ),),
-                  const Row(
+                   Row(
                     children: [
-                      Icon(Icons.pin_drop_outlined),
-                      Text("Meru,  Nchiru", style: TextStyle(color: Colors.black38),),
+                      const Icon(Icons.pin_drop_outlined),
+                      Text(plotHouses.plotList[index].location, style: const TextStyle(color: Color.fromRGBO(0, 0, 0, 0.38)),),
                     ],
                   ),
-                  const Row(
+                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Row(
                         children: [
-                          Icon(Icons.bed,color: Colors.green),
-                          Text("4 Beds",style: TextStyle(color: Colors.black38),)
+                          const Icon(Icons.bed,color: Colors.green),
+                         Text("${featuredProducts.featuredList[index].beds}Beds",style: const TextStyle(color: Colors.black38),)
                         ],
                       ),
                       Row(
                         children: [
-                          Icon(Icons.bathtub, color: Colors.green,),
-                          Text("Bath",style: TextStyle(color: Colors.black38),),
+                          const Icon(Icons.bathtub, color: Colors.green,),
+                          Text("${featuredProducts.featuredList[index].bath}Bath",style: const TextStyle(color: Colors.black38),),
                         ],
                       ),
                       Row(
                         children: [
-                          Icon(Icons.area_chart_rounded,color: Colors.green),
-                          Text("12 sqft", style: TextStyle(color: Colors.black38),)
+                          const Icon(Icons.area_chart_rounded,color: Colors.green),
+                         Text("${featuredProducts.featuredList[index].size}sqft", style: const TextStyle(color: Colors.black38),)
                         ],
                       )
 
@@ -82,10 +94,10 @@ class FeaturedList extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: Colors.green,
                         borderRadius: BorderRadius.circular(15),
-                        image: DecorationImage(image: AssetImage("lib/assets/paul.png"))
+                        image: const DecorationImage(image: AssetImage("lib/assets/paul.png"))
                       ),
                       ),
-                      Text("    John Adam", style: TextStyle(fontWeight: FontWeight.w700),)
+                      const Text("    Paul Muia", style: TextStyle(fontWeight: FontWeight.w700),)
                     ],
                   )
                 ],
@@ -94,6 +106,7 @@ class FeaturedList extends StatelessWidget {
           ],
         );
       });
+     });
       })
     );
   }
